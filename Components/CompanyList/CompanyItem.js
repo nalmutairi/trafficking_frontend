@@ -20,16 +20,17 @@ class CompanyItem extends Component {
     const { company } = this.props;
     // the above line is equivalent to const company = this.props.company
     return (
-      <ListItem thumbnail>
+      <ListItem>
         <Left>
-          <Thumbnail large source={{ uri: company.logo }} />
+          <Thumbnail square large source={{ uri: company.logo }} />
+          <Body>
+            <Text>{company.name}</Text>
+            <Text />
+            <Text note numberOfLines={1}>
+              {company.slogan}
+            </Text>
+          </Body>
         </Left>
-        <Body>
-          <Text>{company.name}</Text>
-          <Text note numberOfLines={1}>
-            {company.slogan}
-          </Text>
-        </Body>
         <Right>
           <Button transparent>
             <Text>View</Text>
