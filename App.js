@@ -1,12 +1,17 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
+import CompanyStore from "./stores/companyStore";
+import CompanyList from "./Components/CompanyList";
+import { Root, Header } from "native-base";
+
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
+      <Root>
+        <Header />
+        <CompanyList />
+      </Root>
     );
   }
 }
