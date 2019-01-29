@@ -27,7 +27,7 @@ class CompanyItem extends Component {
             <Text>{company.name}</Text>
             <Text />
             <Text note numberOfLines={1}>
-              {company.slogan}
+              Category: {company.categorystuff}
             </Text>
           </Body>
         </Left>
