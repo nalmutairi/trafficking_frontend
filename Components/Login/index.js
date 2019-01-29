@@ -6,6 +6,7 @@ import { Form, Item, Input, Button, Text } from "native-base";
 
 // Store
 import authStore from "../../stores/authStore";
+// import { red } from "ansi-colors";
 
 class Login extends Component {
   constructor(props) {
@@ -34,8 +35,20 @@ class Login extends Component {
             onChangeText={password => this.setState({ password })}
           />
         </Item>
-        <Button full onPress={() => authStore.loginUser(this.state)}>
+        <Button
+          full
+          onPress={() => authStore.loginUser(this.state, this.props.navigation)}
+        >
           <Text>Login</Text>
+        </Button>
+        <Button
+          full
+          danger
+          onPress={() =>
+            authStore.registerUser(this.state, this.props.navigation)
+          }
+        >
+          <Text>SignUp</Text>
         </Button>
       </Form>
     );

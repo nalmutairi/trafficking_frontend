@@ -10,61 +10,49 @@ const instance = axios.create({
 class Store {
   constructor() {
     this.user = null;
+    // this.loading = true;
   }
 
-  setAuthToken(token) {
+  setCurrentUser(token) {
     if (token) {
-      // Apply to every request
-      axios.defaults.headers.common["Authorization"] = `JWT ${token}`;
-      this.user = jwt_decode(token);
+      return AsyncStorage.setItem("jwtToken", token).then(() => {
+        axios.defaults.headers.common["Authorization"] = `JWT ${token}`;
+        const decodedUser = jwt_decode(token);
+        this.user = decodedUser;
+        // this.loading = false;
+      });
     } else {
-      delete axios.defaults.headers.common["Authorization"];
-      this.user = null;
+      AsyncStorage.removeItem("jwtToken").then(() => {
+        delete axios.defaults.headers.common["Authorization"];
+        this.user = null;
+      });
     }
   }
 
-  setCurrentUser(decoded) {
-    if (token) {
-      // Decode token to get user data
-      const decodedUser = jwt_decode(token);
-      this.user = decodedUser;
-    } else {
-      this.user = null;
-    }
+  registerUser(userData, navigation) {
+    instance
+      .post("signup/", userData)
+      .then(res => {
+        this.loginUser(userData, navigation);
+      })
+      .catch(err => console.log(err));
   }
 
-  logoutUser() {
-    AsyncStorage.removeItem("jwtToken").then(
-      () => {
-        this.setCurrentUser();
-        this.setAuthToken();
-      },
-      () => {
-        console.log("something went wrong with logging out");
-      }
-    );
-  }
-
-  loginUser(userData) {
+  loginUser(userData, navigation) {
     instance
       .post("signin/", userData)
       .then(res => res.data)
       .then(user => {
-        const { token } = user;
-        // Save token to localStorage
-        AsyncStorage.setItem("jwtToken", token).then(
-          () => {
-            // Set token to Auth header
-            this.setAuthToken(token);
-
-            // Set current user
-            this.setCurrentUser(token);
-          },
-          () => console.log("something went wrong with setting jwt token")
-        );
-        // .then(this.props.navigation.navigate("Lol"));
+        this.setCurrentUser(user.token);
       })
-      .catch(err => console.log("something went wrong logging in"));
+      .then(() => {
+        navigation.navigate("Lol");
+      })
+      .catch(err => console.error(err));
+  }
+
+  logoutUser() {
+    this.setCurrentUser();
   }
 
   checkForToken = () => {
@@ -73,18 +61,12 @@ class Store {
         if (token) {
           const currentTime = Date.now() / 1000;
 
-          // Decode token and get user info
-          const decodedUser = jwt_decode(token);
+          const user = jwt_decode(token);
 
-          // Check token expiration
-          if (decodedUser.exp >= currentTime) {
-            // Set auth token header
-            this.setAuthToken(token);
-            // Set user and isAuthenticated
-            this.setCurrentUser(decodedUser);
+          if (user.exp >= currentTime) {
+            this.setCurrentUser(token);
           } else {
             this.logoutUser();
-            // Redirect to login
           }
         }
       })
@@ -94,6 +76,7 @@ class Store {
 
 decorate(Store, {
   user: observable
+  // loading: observable
 });
 
 export default new Store();

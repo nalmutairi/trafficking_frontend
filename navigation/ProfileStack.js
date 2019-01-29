@@ -13,7 +13,7 @@ const ProfileStack = createStackNavigator(
   {
     initialRouteName: "Login",
     defaultNavigationOptions: {
-      title: "WhatTheShop"
+      title: "welcome to the inn"
     }
   }
 );
