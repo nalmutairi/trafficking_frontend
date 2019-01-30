@@ -34,7 +34,15 @@ class CompanyItem extends Component {
         }}
       >
         <Left>
-          <Thumbnail square large source={{ uri: company.logo }} />
+          <Thumbnail
+            square
+            large
+            source={{
+              uri:
+                company.logo ||
+                "https://www.lifehardin.net/images/employees/197_1.png"
+            }}
+          />
           <Body>
             <Text>{company.name}</Text>
             <Text />
