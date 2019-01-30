@@ -15,7 +15,7 @@ const Nav = createStackNavigator(
     Login: Login
   },
   {
-    initialRoutename: "Login"
+    initialRouteName: "CompanyList"
   }
 );
 

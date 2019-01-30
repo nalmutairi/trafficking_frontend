@@ -25,16 +25,21 @@ class CompanyItem extends Component {
   }
   render() {
     const { company } = this.props;
+    let logo;
+    if (company.logo) {
+      logo = company.logo;
+    } else {
+      logo = "https://www.lifehardin.net/images/employees/197_1.png";
+    }
     // the above line is equivalent to const company = this.props.company
     return (
       <ListItem
         onPress={() => {
-          CompanyStore.fetchACompany(company.id);
           this.handlePress(company);
         }}
       >
         <Left>
-          <Thumbnail square large source={{ uri: company.logo }} />
+          <Thumbnail square large source={{ uri: logo }} />
           <Body>
             <Text>{company.name}</Text>
             <Text />
