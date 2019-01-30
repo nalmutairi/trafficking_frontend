@@ -14,8 +14,7 @@ class HomePage extends Component {
       <Container>
         <View />
         <Header />
-        // <Nav />
-        <AppContainer />
+        <Nav />
       </Container>
     );
   }
