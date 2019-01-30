@@ -6,7 +6,6 @@ class CompanyStore {
     this.companies = [];
     this.company = null;
     this.loading = true;
-
     this.fetchAllCompanies();
   }
 
@@ -46,6 +45,7 @@ class CompanyStore {
 decorate(CompanyStore, {
   companies: observable,
   company: observable,
-  loading: observable})
+  loading: observable
+});
 
 export default new CompanyStore();

@@ -6,6 +6,7 @@ import CompanyList from "../CompanyList";
 import CompanyDetail from "../CompanyDetail";
 
 import Nav from "../../Navigation";
+import AppContainer from "../../Navigation/BottomTab";
 
 class HomePage extends Component {
   render() {
@@ -13,7 +14,8 @@ class HomePage extends Component {
       <Container>
         <View />
         <Header />
-        <Nav />
+        // <Nav />
+        <AppContainer />
       </Container>
     );
   }

@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 
-
 import { withNavigation } from "react-navigation";
-
-
 // Native Base Components
 import {
   Container,
@@ -19,7 +16,6 @@ import {
   Button
 } from "native-base";
 
-
 import CompanyStore from "../../stores/companyStore";
 class CompanyItem extends Component {
   handlePress() {
@@ -27,34 +23,23 @@ class CompanyItem extends Component {
       company: this.props.company
     });
   }
-
-class CompanyItem extends Component {
-
   render() {
     const { company } = this.props;
     // the above line is equivalent to const company = this.props.company
     return (
-
       <ListItem
         onPress={() => {
           CompanyStore.fetchACompany(company.id);
           this.handlePress(company);
         }}
       >
-
-      <ListItem>
-
         <Left>
           <Thumbnail square large source={{ uri: company.logo }} />
           <Body>
             <Text>{company.name}</Text>
             <Text />
             <Text note numberOfLines={1}>
-
               {company.slogan}
-
-              Category: {company.categorystuff}
-
             </Text>
           </Body>
         </Left>
@@ -122,5 +107,3 @@ export default withNavigation(CompanyItem);
 // }
 //
 // export default withNavigation(CompanyItem);
-
-

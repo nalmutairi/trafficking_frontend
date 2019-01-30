@@ -1,33 +1,25 @@
+import React, { Component } from "React";
 
-import React, { Component } from "react";
 import { observer } from "mobx-react";
+import { List, Text } from "native-base";
 
-// NativeBase Components
-import { List, Content, Button, Text, Icon, Container } from "native-base";
+import CompanyItem from "./CompanyItem";
 
-// My Slave Stores
 import CompanyStore from "../../stores/companyStore";
-
-// My Slave Components
-import CompanyItem from "../CompanyList/CompanyItem";
 
 class CompanyList extends Component {
   render() {
+    console.log(CompanyStore.companies);
     const companies = CompanyStore.companies;
-    let ListCompany;
+    let CompanyList;
+
     if (companies) {
-      ListCompany = companies.map(company => (
+      CompanyList = companies.map(company => (
         <CompanyItem company={company} key={company.name} />
       ));
     }
-    return (
-      <Content>
-        <Container>
-          <List>{ListCompany}</List>
-        </Container>
-      </Content>
-    );
 
+    return <List>{CompanyList}</List>;
   }
 }
 
