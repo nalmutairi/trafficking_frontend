@@ -18,8 +18,10 @@ class AppointmentStore {
   }
 }
 
+
 decorate(AppointmentStore, {
   appointments: observable
 });
 
 export default new AppointmentStore();
+master

@@ -1,26 +1,33 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import Expo, { AppLoading } from "expo";
 
-import CompanyStore from "./stores/companyStore";
-import CompanyList from "./Components/CompanyList";
-import { Root, Header } from "native-base";
+// Component
+import HomePage from "./Components/HomePage";
 
-export default class App extends React.Component {
+import Nav from "./Navigation";
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      fontsAreLoaded: false
+    };
+  }
+
+  // componentWillMount() {
+  //   Expo.Font.loadAsync({
+  //     Roboto: require("native-base/Fonts/Roboto.ttf"),
+  //     Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
+  //   }).then(() => this.setState({ fontsAreLoaded: true }));
+  // }
+
   render() {
-    return (
-      <Root>
-        <Header />
-        <CompanyList />
-      </Root>
-    );
+
+    // if (!this.state.fontsAreLoaded) {
+    //   return <AppLoading />;
+    // }
+    return <Nav />;
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  }
-});
+export default App;
+

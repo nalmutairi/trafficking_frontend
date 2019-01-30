@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import { observer } from "mobx-react";
 
@@ -26,6 +27,7 @@ class CompanyList extends Component {
         </Container>
       </Content>
     );
+
   }
 }
 
