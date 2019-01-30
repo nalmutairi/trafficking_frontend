@@ -1,21 +1,31 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import Expo, { AppLoading } from "expo";
 
-export default class App extends React.Component {
+// Component
+import HomePage from "./Components/HomePage";
+
+import Nav from "./Navigation";
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      fontsAreLoaded: false
+    };
+  }
+
+  // componentWillMount() {
+  //   Expo.Font.loadAsync({
+  //     Roboto: require("native-base/Fonts/Roboto.ttf"),
+  //     Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
+  //   }).then(() => this.setState({ fontsAreLoaded: true }));
+  // }
+
   render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
-    );
+    // if (!this.state.fontsAreLoaded) {
+    //   return <AppLoading />;
+    // }
+    return <Nav />;
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
