@@ -25,13 +25,15 @@ class CompanyItem extends Component {
   }
   render() {
     const { company } = this.props;
+    // the above line is equivalent to const company = this.props.company
+
     let logo;
     if (company.logo) {
       logo = company.logo;
     } else {
-      logo = "https://www.lifehardin.net/images/employees/197_1.png";
+      logo =
+        "http://maidcleanservices.ca/wp-content/uploads/2016/04/maidclean_green_leaf-300x276.jpg";
     }
-    // the above line is equivalent to const company = this.props.company
     return (
       <ListItem
         onPress={() => {
@@ -49,7 +51,12 @@ class CompanyItem extends Component {
           </Body>
         </Left>
         <Right>
-          <Button transparent>
+          <Button
+            transparent
+            onPress={() => {
+              this.handlePress(company);
+            }}
+          >
             <Text>View</Text>
           </Button>
         </Right>
