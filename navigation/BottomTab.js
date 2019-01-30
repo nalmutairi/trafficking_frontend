@@ -4,20 +4,22 @@ import { Icon } from "native-base";
 import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 import LolStack from "./LolStack";
 import ProfileStack from "./ProfileStack";
+import Profile from "../components/Profile";
 
 const BottomTab = createBottomTabNavigator(
   {
     ProfileTab: ProfileStack,
-    LolTab: LolStack
+    AnotherTab: Profile
+    // LolTab: LolStack
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state;
         let iconName;
-        if (routeName === "LolTab") {
-          iconName = "smiley";
-          iconType = "Octicons";
+        if (routeName === "AnotherTab") {
+          iconName = "profile";
+          iconType = "AntDesign";
         } else if (routeName === "ProfileTab") {
           iconName = "person";
           iconType = "MaterialIcons";

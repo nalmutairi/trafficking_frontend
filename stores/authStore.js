@@ -46,7 +46,7 @@ class Store {
         this.setCurrentUser(user.token);
       })
       .then(() => {
-        navigation.navigate("Lol");
+        navigation.navigate("Profile");
       })
       .catch(err => console.error(err));
   }
