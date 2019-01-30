@@ -6,12 +6,13 @@ class CompanyStore {
     this.companies = [];
     this.company = null;
     this.loading = true;
+
     this.fetchAllCompanies();
   }
 
   fetchAllCompanies() {
     axios
-      .get("http://127.0.0.1:8000/companylist/")
+      .get("http://104.248.38.127/companylist/")
       .then(res => res.data)
       .then(companies => {
         this.companies = companies;
@@ -22,7 +23,7 @@ class CompanyStore {
 
   fetchACompany(companyid) {
     axios
-      .get("http://127.0.0.1:8000/companydetail/" + companyid + "?format=json")
+      .get("http://104.248.38.127/companydetail/" + companyid + "?format=json")
       .then(res => res.data)
       .then(company => {
         this.company = company;
@@ -45,7 +46,6 @@ class CompanyStore {
 decorate(CompanyStore, {
   companies: observable,
   company: observable,
-  loading: observable
-});
+  loading: observable})
 
 export default new CompanyStore();

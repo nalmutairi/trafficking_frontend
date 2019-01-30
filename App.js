@@ -21,6 +21,7 @@ class App extends React.Component {
   // }
 
   render() {
+
     // if (!this.state.fontsAreLoaded) {
     //   return <AppLoading />;
     // }
@@ -29,3 +30,4 @@ class App extends React.Component {
 }
 
 export default App;
+

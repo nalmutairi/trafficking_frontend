@@ -1,39 +1,27 @@
-import React from "react";
-
 import axios from "axios";
+import { decorate, observable } from "mobx";
 
 class AppointmentStore {
   constructor() {
-    this.days = [];
-    this.slots = [];
-
-    this.fetchAllDays();
-    this.fetchAllSlot();
+    this.appointments = [];
+    this.fetchAllAppointments();
   }
 
-  fetchAllDays() {
+  fetchAllAppointments() {
     axios
-      .get("http://104.248.38.127/daylist/")
+      .get("http://104.248.38.127/appointmentlist/")
       .then(res => res.data)
-      .then(day => {
-        this.days = day;
-      })
-      .catch(err => console.error(err));
-  }
-
-  fetchAllSlots() {
-    axios
-      .get("http://104.248.38.127/slotlist/")
-      .then(res => res.data)
-      .then(slot => {
-        this.slot = slot;
+      .then(appointments => {
+        this.appointments = appointments;
       })
       .catch(err => console.error(err));
   }
 }
 
-decorate(AppointmentStore, { days: observable, slots: observable });
 
-const appointmentStore = new AppointmentStore();
+decorate(AppointmentStore, {
+  appointments: observable
+});
 
-export default appointmentStore;
+export default new AppointmentStore();
+master
