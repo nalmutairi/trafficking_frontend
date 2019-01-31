@@ -8,7 +8,8 @@ import {
   Item,
   Input,
   Button,
-  Text
+  Text,
+  Label
 } from "native-base";
 import authStore from "../../stores/authStore";
 import addressStore from "../../stores/addressStore";
@@ -32,42 +33,48 @@ class Profile extends Component {
       <Container>
         <Content>
           <Form>
-            <Item>
+            <Item stackedLabel>
+              <Label>Area</Label>
               <Input
                 placeholder="area"
                 autoCapitalize="none"
                 onChangeText={area => this.setState({ area })}
               />
             </Item>
-            <Item>
+            <Item stackedLabel>
+              <Label>Block</Label>
               <Input
                 placeholder="block"
                 autoCapitalize="none"
                 onChangeText={block => this.setState({ block })}
               />
             </Item>
-            <Item>
+            <Item stackedLabel>
+              <Label>Street</Label>
               <Input
                 placeholder="street"
                 autoCapitalize="none"
                 onChangeText={street => this.setState({ street })}
               />
             </Item>
-            <Item>
+            <Item stackedLabel>
+              <Label>Jaada</Label>
               <Input
                 placeholder="jaada"
                 autoCapitalize="none"
                 onChangeText={jaada => this.setState({ jaada })}
               />
             </Item>
-            <Item>
+            <Item stackedLabel>
+              <Label>House</Label>
               <Input
                 placeholder="house"
                 autoCapitalize="none"
                 onChangeText={house => this.setState({ house })}
               />
             </Item>
-            <Item last>
+            <Item stackedLabel>
+              <Label>Phone</Label>
               <Input
                 placeholder="phone"
                 autoCapitalize="none"
