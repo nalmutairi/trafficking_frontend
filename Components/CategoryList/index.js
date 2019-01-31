@@ -20,7 +20,11 @@ class CategoryList extends Component {
               <TouchableOpacity
                 key={index}
                 style={styles.item}
-                onPress={() => {}}
+                onPress={() =>
+                  this.props.navigation.navigate("CompanyList", {
+                    category: category.name
+                  })
+                }
               >
                 <Thumbnail
                   source={{

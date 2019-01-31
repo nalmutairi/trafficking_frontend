@@ -1,5 +1,4 @@
 import { StyleSheet, Dimensions } from "react-native";
-import { black } from "ansi-colors";
 
 const styles = StyleSheet.create({
   container: {
@@ -7,15 +6,17 @@ const styles = StyleSheet.create({
     flexWrap: "wrap"
   },
   item: {
-    width: Dimensions.get("window").width * 0.5,
+    width: Dimensions.get("window").width * 0.45,
     height: 150,
-    borderWidth: 1,
-    borderColor: "silver",
-    // backgroundColor: "silver",
+    backgroundColor: "#E4EBF3",
+    borderWidth: 2,
+    borderColor: "#A7A8B1",
     alignItems: "center",
     justifyContent: "center",
     marginRight: 0,
-    marginLeft: 0
+    marginLeft: 13.5,
+    marginTop: 11,
+    marginBottom: 0
   },
   itemIcon: {
     width: 100,
