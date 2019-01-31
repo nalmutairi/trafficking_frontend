@@ -1,13 +1,18 @@
 import React, { Component } from "react";
 
 import { Text, Content } from "native-base";
-import CompanyDetail from "../CompanyDetail";
 
+import SlotList from "../SlotList";
 class DayItem extends Component {
   render() {
     const { day } = this.props;
 
-    return <Text>{day.opening_time}</Text>;
+    return (
+      <Content>
+        <Text>{day.name}</Text>
+        <SlotList day={day} key={day.id} />
+      </Content>
+    );
   }
 }
 

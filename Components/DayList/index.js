@@ -7,7 +7,7 @@ import DayItem from "./DayItem";
 class DayList extends Component {
   render() {
     //??
-    const days = CompanyDetail.day;
+    const days = this.props.company.days;
     //??
     console.log("DAYS");
     console.log(days);

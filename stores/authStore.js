@@ -4,13 +4,12 @@ import { AsyncStorage } from "react-native";
 import jwt_decode from "jwt-decode";
 
 const instance = axios.create({
-  baseURL: "http://104.248.38.127/"
+  baseURL: "http://127.0.0.1:8000/"
 });
 
 class Store {
   constructor() {
     this.user = null;
-    // this.loading = true;
   }
 
   setCurrentUser(token) {
@@ -76,7 +75,6 @@ class Store {
 
 decorate(Store, {
   user: observable
-  // loading: observable
 });
 
 export default new Store();

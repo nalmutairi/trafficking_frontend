@@ -29,12 +29,19 @@ class CompanyItem extends Component {
     return (
       <ListItem
         onPress={() => {
-          CompanyStore.fetchACompany(company.id);
           this.handlePress(company);
         }}
       >
         <Left>
-          <Thumbnail square large source={{ uri: company.logo }} />
+          <Thumbnail
+            square
+            large
+            source={{
+              uri:
+                company.logo ||
+                "http://www.resetyourbody.com/wp-content/uploads/COMPANY_LOGO/123Chrysanthemum.jpg"
+            }}
+          />
           <Body>
             <Text>{company.name}</Text>
             <Text />

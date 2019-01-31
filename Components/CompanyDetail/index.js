@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Content, Text } from "native-base";
+import { Content, Text, List } from "native-base";
 import { observer } from "mobx-react";
 import axios from "axios";
 
@@ -16,49 +16,37 @@ class CompanyDetail extends Component {
       companyid: this.props.navigation.getParam("company", {}).id,
       day: []
     };
+    this.fetchACompany();
   }
 
-  // componentDidMount() {
-  //   this.fetchACompany();
-  // }
-  //
-  // componentDidUpdate() {
-  //   this.findDays();
-  // }
-  // fetchACompany() {
-  //   axios
-  //     .get(
-  //       "http://127.0.0.1:8000/companydetail/" +
-  //         this.state.companyid +
-  //         "?format=json"
-  //     )
-  //     .then(res => res.data)
-  //     .then(company => this.setState({ company: company, loading: false }))
-  //     .then(day => {
-  //       const company = this.state.company;
-  //       let DayList;
-  //
-  //       company.days.map(day => {
-  //         console.log(day);
-  //         this.setState({ day: day });
-  //       });
-  //     })
-  //
-  //     .catch(err => console.error(err));
-  // }
+  fetchACompany() {
+    axios
+      .get("http://104.248.38.127/company/detail/" + this.state.companyid)
+      .then(res => res.data)
+      .then(company => this.setState({ company: company, loading: false }))
+      .catch(err => console.error(err));
+  }
 
   static navigationOptions = ({ navigation }) => ({
     title: navigation.getParam("company", {}).name
   });
 
   render() {
-    if (CompanyStore.loading) {
+    console.log(this.state.company);
+    if (this.state.loading) {
       return <Content />;
     } else {
-      //const company = this.state.company;
-      // console.log(company);
+      const company = this.state.company;
+      console.log("COOOOOOO");
+      console.log(company);
       //console.log("erwe " + CompanyStore.day.name);
-      return <Text>{CompanyStore.name}</Text>;
+
+      return (
+        <Content>
+          <Text>helef</Text>
+          <DayList company={company} />
+        </Content>
+      );
     }
   }
 }
