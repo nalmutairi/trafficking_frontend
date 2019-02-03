@@ -13,6 +13,7 @@ class CompanyList extends Component {
     let filtered = this.props.navigation.getParam("category");
     let CompanyList;
     if (companies) {
+      //-------------- filtered items from category list ----------------------
       if (filtered) {
         CompaniesFiltered = companies.filter(company => {
           return company.category === filtered;
@@ -20,7 +21,9 @@ class CompanyList extends Component {
         CompanyList = CompaniesFiltered.map(company => (
           <CompanyItem company={company} key={company.name} />
         ));
-      } else {
+      }
+      // -------------- end of filtered items from category list ---------------
+      else {
         CompanyList = companies.map(company => (
           <CompanyItem company={company} key={company.name} />
         ));
