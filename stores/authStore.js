@@ -10,7 +10,6 @@ const instance = axios.create({
 class Store {
   constructor() {
     this.user = null;
-    // this.loading = true;
   }
 
   setCurrentUser(token) {
@@ -22,7 +21,7 @@ class Store {
         // this.loading = false;
       });
     } else {
-      AsyncStorage.removeItem("jwtToken").then(() => {
+      return AsyncStorage.removeItem("jwtToken").then(() => {
         delete axios.defaults.headers.common["Authorization"];
         this.user = null;
       });
@@ -42,17 +41,16 @@ class Store {
     instance
       .post("signin/", userData)
       .then(res => res.data)
-      .then(user => {
-        this.setCurrentUser(user.token);
-      })
+      .then(user => this.setCurrentUser(user.token))
       .then(() => {
-        navigation.navigate("Lol");
+        navigation.navigate("Profile");
       })
       .catch(err => console.error(err));
   }
 
-  logoutUser() {
+  logoutUser(navigation) {
     this.setCurrentUser();
+    navigation.navigate("Login");
   }
 
   checkForToken = () => {
@@ -76,7 +74,6 @@ class Store {
 
 decorate(Store, {
   user: observable
-  // loading: observable
 });
 
 export default new Store();

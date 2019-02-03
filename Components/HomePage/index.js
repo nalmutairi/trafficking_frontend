@@ -13,7 +13,7 @@ class HomePage extends Component {
     return (
       <Container>
         <View />
-        <Header />
+        {/* <Header /> */}
         <Nav />
       </Container>
     );
