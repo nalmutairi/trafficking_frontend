@@ -13,10 +13,6 @@ class HomePage extends Component {
     return (
       <Container>
         <View />
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
         <Nav />
       </Container>
     );
