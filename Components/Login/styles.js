@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
     alignItems: "stretch"
   },
   image: {
-    // marginLeft: 30,
     width: 200,
     height: 200,
     alignSelf: "center",

@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { observer } from "mobx-react";
 
 // NativeBase Components
-import { Form, Item, Input, Button, Text, Container, Icon } from "native-base";
-import { Card, ListItem, Image } from "react-native-elements";
+import { Item, Input, Button, Text, Container, Icon } from "native-base";
+import { Card, Image } from "react-native-elements";
 
 // Store
 import authStore from "../../stores/authStore";
