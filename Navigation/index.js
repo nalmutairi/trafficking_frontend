@@ -23,7 +23,7 @@ const Nav = createStackNavigator(
     AppointmentList: AppointmentList
   },
   {
-    initialRouteName: "CompanyList"
+    initialRouteName: "CategoryList"
   }
 );
 
