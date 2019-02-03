@@ -21,13 +21,11 @@ class App extends React.Component {
   // }
 
   render() {
-
     // if (!this.state.fontsAreLoaded) {
     //   return <AppLoading />;
     // }
-    return <Nav />;
+    return <HomePage />;
   }
 }
 
 export default App;
-

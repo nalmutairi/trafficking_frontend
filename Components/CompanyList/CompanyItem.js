@@ -26,15 +26,22 @@ class CompanyItem extends Component {
   render() {
     const { company } = this.props;
     // the above line is equivalent to const company = this.props.company
+
+    let logo;
+    if (company.logo) {
+      logo = company.logo;
+    } else {
+      logo =
+        "http://maidcleanservices.ca/wp-content/uploads/2016/04/maidclean_green_leaf-300x276.jpg";
+    }
     return (
       <ListItem
         onPress={() => {
-          CompanyStore.fetchACompany(company.id);
           this.handlePress(company);
         }}
       >
         <Left>
-          <Thumbnail square large source={{ uri: company.logo }} />
+          <Thumbnail square large source={{ uri: logo }} />
           <Body>
             <Text>{company.name}</Text>
             <Text />
@@ -44,7 +51,12 @@ class CompanyItem extends Component {
           </Body>
         </Left>
         <Right>
-          <Button transparent>
+          <Button
+            transparent
+            onPress={() => {
+              this.handlePress(company);
+            }}
+          >
             <Text>View</Text>
           </Button>
         </Right>
