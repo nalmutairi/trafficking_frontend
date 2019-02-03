@@ -41,7 +41,17 @@ class CompanyItem extends Component {
         }}
       >
         <Left>
-          <Thumbnail square large source={{ uri: logo }} />
+
+          <Thumbnail
+            square
+            large
+            source={{
+              uri:
+                company.logo ||
+                "http://www.resetyourbody.com/wp-content/uploads/COMPANY_LOGO/123Chrysanthemum.jpg"
+            }}
+          />
+
           <Body>
             <Text>{company.name}</Text>
             <Text />
