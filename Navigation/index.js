@@ -4,7 +4,11 @@ import CompanyList from "../Components/CompanyList";
 import CompanyDetail from "../Components/CompanyDetail";
 import DayList from "../Components/DayList";
 import Login from "../Components/Login";
+
+import AppointmentList from "../Components/AppointmentList";
+
 import Profile from "../Components/Profile";
+
 
 import { createAppContainer } from "react-navigation";
 
@@ -14,11 +18,13 @@ const Nav = createStackNavigator(
     CompanyDetail: CompanyDetail,
     DayList: DayList,
     Login: Login,
-    Profile: Profile
+
+    AppointmentList: AppointmentList
   },
   {
-    initialRouteName: "Login"
-  }
+    initialRouteName: "CompanyList"
+
+  },
 );
 
 export default createAppContainer(Nav);

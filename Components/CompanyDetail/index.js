@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 
-import { Content, Text } from "native-base";
+import { Content, Text, List, Button } from "native-base";
 import { observer } from "mobx-react";
 import axios from "axios";
 
+import { Calendar, CalendarList } from "react-native-calendars";
 import DayList from "../DayList";
+import SlotList from "../SlotList";
 import CompanyStore from "../../stores/companyStore";
 
 class CompanyDetail extends Component {
@@ -14,51 +16,49 @@ class CompanyDetail extends Component {
       company: null,
       loading: true,
       companyid: this.props.navigation.getParam("company", {}).id,
-      day: []
+      day: null
     };
+    this.fetchACompany();
   }
 
-  // componentDidMount() {
-  //   this.fetchACompany();
-  // }
-  //
-  // componentDidUpdate() {
-  //   this.findDays();
-  // }
-  // fetchACompany() {
-  //   axios
-  //     .get(
-  //       "http://127.0.0.1:8000/companydetail/" +
-  //         this.state.companyid +
-  //         "?format=json"
-  //     )
-  //     .then(res => res.data)
-  //     .then(company => this.setState({ company: company, loading: false }))
-  //     .then(day => {
-  //       const company = this.state.company;
-  //       let DayList;
-  //
-  //       company.days.map(day => {
-  //         console.log(day);
-  //         this.setState({ day: day });
-  //       });
-  //     })
-  //
-  //     .catch(err => console.error(err));
-  // }
+  fetchACompany() {
+    axios
+      .get("http://104.248.38.127/company/detail/" + this.state.companyid)
+      .then(res => res.data)
+      .then(company => this.setState({ company: company, loading: false }))
+      .catch(err => console.error(err));
+  }
 
   static navigationOptions = ({ navigation }) => ({
-    title: navigation.getParam("company", {}).name
+    title: navigation.getParam("company", {}).name,
+    headerRight: (
+      <Button onPress={() => navigation.navigate("AppointmentList")}>
+        <Text>CART</Text>
+      </Button>
+    )
   });
 
   render() {
-    if (CompanyStore.loading) {
+    let slotList;
+    if (this.state.day) {
+      slotList = <SlotList day={this.state.day} key={this.state.day.id} />;
+      console.log("hello", slotList);
+    }
+    console.log(this.state.company);
+    if (this.state.loading) {
       return <Content />;
     } else {
-      //const company = this.state.company;
+      const company = this.state.company;
+      // console.log("COOOOOOO");
       // console.log(company);
       //console.log("erwe " + CompanyStore.day.name);
-      return <Text>{CompanyStore.name}</Text>;
+
+      return (
+        <Content>
+          <DayList company={company} />
+          <List>{slotList}</List>
+        </Content>
+      );
     }
   }
 }
