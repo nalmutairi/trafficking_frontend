@@ -4,13 +4,12 @@ import { AsyncStorage } from "react-native";
 import jwt_decode from "jwt-decode";
 
 const instance = axios.create({
-  baseURL: "http://104.248.38.127/"
+  baseURL: "http://127.0.0.1:8000/"
 });
 
 class Store {
   constructor() {
     this.user = null;
-    // this.loading = true;
   }
 
   setCurrentUser(token) {
@@ -22,7 +21,7 @@ class Store {
         // this.loading = false;
       });
     } else {
-      AsyncStorage.removeItem("jwtToken").then(() => {
+      return AsyncStorage.removeItem("jwtToken").then(() => {
         delete axios.defaults.headers.common["Authorization"];
         this.user = null;
       });
@@ -42,17 +41,16 @@ class Store {
     instance
       .post("signin/", userData)
       .then(res => res.data)
-      .then(user => {
-        this.setCurrentUser(user.token);
-      })
+      .then(user => this.setCurrentUser(user.token))
       .then(() => {
-        navigation.navigate("Lol");
+        navigation.navigate("Profile");
       })
       .catch(err => console.error(err));
   }
 
-  logoutUser() {
+  logoutUser(navigation) {
     this.setCurrentUser();
+    navigation.navigate("Login");
   }
 
   checkForToken = () => {
@@ -76,7 +74,6 @@ class Store {
 
 decorate(Store, {
   user: observable
-  // loading: observable
 });
 
 export default new Store();
