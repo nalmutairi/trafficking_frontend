@@ -25,6 +25,12 @@ class CompanyItem extends Component {
   }
   render() {
     const { company } = this.props;
+    let logo;
+    if (company.logo) {
+      logo = company.logo;
+    } else {
+      logo = "https://www.lifehardin.net/images/employees/197_1.png";
+    }
     // the above line is equivalent to const company = this.props.company
     return (
       <ListItem
@@ -33,6 +39,7 @@ class CompanyItem extends Component {
         }}
       >
         <Left>
+
           <Thumbnail
             square
             large
@@ -42,6 +49,7 @@ class CompanyItem extends Component {
                 "http://www.resetyourbody.com/wp-content/uploads/COMPANY_LOGO/123Chrysanthemum.jpg"
             }}
           />
+
           <Body>
             <Text>{company.name}</Text>
             <Text />
