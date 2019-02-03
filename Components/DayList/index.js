@@ -1,22 +1,24 @@
 import React, { Component } from "react";
 import { List } from "native-base";
 
+import { Content, Calendar, CalendarList } from "react-native-calendars";
 import CompanyDetail from "../CompanyDetail";
 import DayItem from "./DayItem";
 
 class DayList extends Component {
   render() {
     //??
-    const days = this.props.company.days;
+    const company = this.props.company;
+    const days = company.days;
     //??
-    console.log("DAYS");
-    console.log(days);
+    // console.log("DAYS");
+    // console.log(days);
     let DayList;
     if (days) {
-      DayList = days.map(day => <DayItem day={day} key={day.id} />);
+      DayList = days.map(day => <DayItem company={company} key={day.id} />);
     }
 
-    return <List>{DayList}</List>;
+    return <DayItem company={company} key={company.id} />;
   }
 }
 
