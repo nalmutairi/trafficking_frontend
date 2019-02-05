@@ -24,7 +24,7 @@ class App extends React.Component {
     // if (!this.state.fontsAreLoaded) {
     //   return <AppLoading />;
     // }
-    return <HomePage />;
+    return <Nav />;
   }
 }
 

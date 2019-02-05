@@ -3,8 +3,11 @@ import axios from "axios";
 import { AsyncStorage } from "react-native";
 import jwt_decode from "jwt-decode";
 
+// //adddress store
+import addressStore from "../stores/addressStore";
+
 const instance = axios.create({
-  baseURL: "http://127.0.0.1:8000/"
+  baseURL: "http://104.248.38.127"
 });
 
 class Store {
@@ -18,7 +21,7 @@ class Store {
         axios.defaults.headers.common["Authorization"] = `JWT ${token}`;
         const decodedUser = jwt_decode(token);
         this.user = decodedUser;
-        // this.loading = false;
+        addressStore.fetchAddresses();
       });
     } else {
       return AsyncStorage.removeItem("jwtToken").then(() => {
@@ -29,6 +32,7 @@ class Store {
   }
 
   registerUser(userData, navigation) {
+    console.log(userData);
     instance
       .post("signup/", userData)
       .then(res => {
@@ -43,14 +47,14 @@ class Store {
       .then(res => res.data)
       .then(user => this.setCurrentUser(user.token))
       .then(() => {
-        navigation.navigate("Profile");
+        navigation.replace("Profile");
       })
       .catch(err => console.error(err));
   }
 
   logoutUser(navigation) {
     this.setCurrentUser();
-    navigation.navigate("Login");
+    navigation.replace("Account");
   }
 
   checkForToken = () => {

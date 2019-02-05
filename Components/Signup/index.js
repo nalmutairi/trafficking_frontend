@@ -13,11 +13,17 @@ import authStore from "../../stores/authStore";
 import styles from "./styles";
 
 class Login extends Component {
+  static navigationOptions = {
+    title: "Login"
+  };
   constructor(props) {
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      first_name: "",
+      last_name: "",
+      email: ""
     };
   }
 
@@ -46,18 +52,40 @@ class Login extends Component {
               onChangeText={password => this.setState({ password })}
             />
           </Item>
+          <Item>
+            <Input
+              placeholder="First Name"
+              autoCapitalize="none"
+              onChangeText={first_name => this.setState({ first_name })}
+            />
+          </Item>
+          <Item>
+            <Input
+              placeholder="Last Name"
+              autoCapitalize="none"
+              onChangeText={last_name => this.setState({ last_name })}
+            />
+          </Item>
+          <Item>
+            <Input
+              placeholder="Email Adress"
+              autoCapitalize="none"
+              onChangeText={email => this.setState({ email })}
+            />
+          </Item>
           <Button
             full
-            onPress={() =>
-              authStore.loginUser(this.state, this.props.navigation)
+            danger
+            onPress={
+              // () => console.log(this.state)
+              () => authStore.registerUser(this.state, this.props.navigation)
             }
           >
-            <Text>Login</Text>
+            <Text>SignUp</Text>
           </Button>
         </Card>
       </Container>
     );
   }
 }
-// export default observer(Login);
 export default withNavigation(observer(Login));
