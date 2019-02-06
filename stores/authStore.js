@@ -4,10 +4,10 @@ import { AsyncStorage } from "react-native";
 import jwt_decode from "jwt-decode";
 
 const instance = axios.create({
-  baseURL: "http://127.0.0.1:8000/"
+  baseURL: "http:104.248.38.127/"
 });
 
-class Store {
+class AuthStore {
   constructor() {
     this.user = null;
   }
@@ -41,10 +41,13 @@ class Store {
     instance
       .post("signin/", userData)
       .then(res => res.data)
-      .then(user => this.setCurrentUser(user.token))
-      .then(() => {
+      .then(user => {
+        this.setCurrentUser(user.token);
         navigation.navigate("Profile");
       })
+      // .then(() => {
+      //   navigation.replace("CoffeeList");
+      // })
       .catch(err => console.error(err));
   }
 
@@ -72,8 +75,8 @@ class Store {
   };
 }
 
-decorate(Store, {
+decorate(AuthStore, {
   user: observable
 });
 
-export default new Store();
+export default new AuthStore();

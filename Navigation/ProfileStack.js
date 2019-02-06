@@ -6,6 +6,7 @@ import React from "react";
 import LoginScreen from "../Components/Login";
 import { Icon } from "native-base";
 
+import CompanyList from "../Components/CompanyList";
 const ProfileStack = createStackNavigator(
   {
     Profile: ProfileScreen,

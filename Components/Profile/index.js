@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import { observer } from "mobx-react";
 // NativeBase Components
 import {
   Container,
@@ -9,10 +10,26 @@ import {
   Input,
   Button,
   Text,
-  Label
+  Label,
+  List,
+  Accordion
 } from "native-base";
 import authStore from "../../stores/authStore";
 import addressStore from "../../stores/addressStore";
+import AppointmentStore from "../../stores/appointmentStore";
+
+import SlotItem from "../SlotList/SlotItem";
+import SlotList from "../SlotList";
+const dataArray = [
+  {
+    title: "Pending Orders",
+    content: <SlotList slot={AppointmentStore.pendingSlots} />
+  },
+  {
+    title: "Past Orders",
+    content: <SlotList slot={AppointmentStore.pastSlots} />
+  }
+];
 
 class Profile extends Component {
   constructor(props) {
@@ -26,9 +43,16 @@ class Profile extends Component {
       jaada: "",
       user: authStore.user
     };
+    AppointmentStore.pastAppointments();
   }
   render() {
     console.log(authStore.user);
+    console.log("APPOINTMENT PAST: ", AppointmentStore.pendingSlots);
+    let slots = AppointmentStore.pendingSlots;
+    let SlotList;
+    if (slots) {
+      SlotList = slots.map(slot => <SlotItem slot={slot} key={slot.id} />);
+    }
     return (
       <Container>
         <Content>
@@ -92,6 +116,11 @@ class Profile extends Component {
               <Text>Create Address</Text>
             </Button>
           </Form>
+
+          <List>{SlotList}</List>
+        </Content>
+        <Content padder>
+          <Accordion dataArray={dataArray} icon="add" expandedIcon="remove" />
         </Content>
       </Container>
 
@@ -108,4 +137,4 @@ class Profile extends Component {
     );
   }
 }
-export default Profile;
+export default observer(Profile);
