@@ -2,7 +2,16 @@ import React, { Component } from "react";
 import { observer } from "mobx-react";
 
 // NativeBase Components
-import { Item, Input, Button, Text, Container, Icon } from "native-base";
+import {
+  Item,
+  Input,
+  Button,
+  Text,
+  Container,
+  Icon,
+  Content,
+  View
+} from "native-base";
 import { Card, Image } from "react-native-elements";
 
 // Store
@@ -29,7 +38,9 @@ class Login extends Component {
         <Card>
           <Image
             style={styles.image}
-            source={{ uri: "http://104.248.38.127/media/iCleanU_28SUxkO.jpg" }}
+            source={{
+              uri: "http://104.248.38.127/media/iCleanU_28SUxkO.jpg"
+            }}
           />
           <Item>
             <Icon active type="Entypo" name="user" />
