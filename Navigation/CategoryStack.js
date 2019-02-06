@@ -11,10 +11,10 @@ const CategoryStack = createStackNavigator(
     CompanyDetail: CompanyDetail
   },
   {
-    initialRouteName: "CategoryList"
-    // defaultNavigationOptions: {
-    //   title: "welcome to the inn"
-    // }
+    initialRouteName: "CategoryList",
+    navigationOptions: {
+      tabBarColor: "#6992F9"
+    }
   }
 );
 

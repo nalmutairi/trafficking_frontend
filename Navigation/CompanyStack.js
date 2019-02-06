@@ -9,10 +9,10 @@ const CompanyStack = createStackNavigator(
     CompanyDetail: CompanyDetail
   },
   {
-    initialRouteName: "CompanyList"
-    // defaultNavigationOptions: {
-    //   title: "welcome to the inn"
-    // }
+    initialRouteName: "CompanyList",
+    navigationOptions: {
+      tabBarColor: "#07B70A"
+    }
   }
 );
 

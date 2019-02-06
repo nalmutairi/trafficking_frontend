@@ -1,7 +1,9 @@
 import React from "react";
 import { Icon } from "native-base";
 
-import { createBottomTabNavigator, createAppContainer } from "react-navigation";
+import { createAppContainer } from "react-navigation";
+
+import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 
 import TouchableBounce from "react-native/Libraries/Components/Touchable/TouchableBounce";
 
@@ -9,11 +11,11 @@ import ProfileStack from "./ProfileStack";
 import CategoryStack from "./CategoryStack";
 import CompanyStack from "./CompanyStack";
 
-const BottomTab = createBottomTabNavigator(
+const BottomTab = createMaterialBottomTabNavigator(
   {
-    CategoryTab: CategoryStack,
-    CompanyTab: CompanyStack,
-    ProfileTab: ProfileStack
+    Category: { screen: CategoryStack },
+    List: { screen: CompanyStack },
+    Profile: { screen: ProfileStack }
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -21,30 +23,26 @@ const BottomTab = createBottomTabNavigator(
         const { routeName } = navigation.state;
         let iconName;
         let iconType;
-        if (routeName === "CategoryTab") {
+        if (routeName === "Category") {
           iconName = "home";
-        } else if (routeName === "CompanyTab") {
+        } else if (routeName === "List") {
           iconName = "list";
-        } else if (routeName === "ProfileTab") {
+        } else if (routeName === "Profile") {
           iconName = "person";
           iconType = "MaterialIcons";
         }
         return (
           <Icon name={iconName} style={{ color: tintColor }} type={iconType} />
         );
-      },
-      tabBarButtonComponent: TouchableBounce
-    }),
-    tabBarOptions: {
-      showLabel: false,
-      activeTintColor: "#6200EE",
-      inactiveTintColor: "#858585",
-      style: {
-        backgroundColor: "white"
-      },
-      labelStyle: {
-        fontSize: 12
       }
+      // tabBarButtonComponent: TouchableBounce
+    }),
+    initialRouteName: "Category",
+    shifting: true,
+    activeTintColor: "white",
+    inactiveTintColor: "rgba(255, 255, 255, 0.4)",
+    barStyle: {
+      backgroundColor: ""
     }
   }
 );

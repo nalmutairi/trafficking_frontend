@@ -41,7 +41,6 @@ class CompanyItem extends Component {
         }}
       >
         <Left>
-
           <Thumbnail
             square
             large

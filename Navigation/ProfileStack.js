@@ -12,10 +12,10 @@ const ProfileStack = createStackNavigator(
     Login: LoginScreen
   },
   {
-    initialRouteName: "Login"
-    // defaultNavigationOptions: {
-    //   title: "welcome to the inn"
-    // }
+    initialRouteName: "Login",
+    navigationOptions: {
+      tabBarColor: "#DD3C40"
+    }
   }
 );
 
