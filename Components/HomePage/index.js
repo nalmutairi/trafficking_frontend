@@ -6,14 +6,15 @@ import CompanyList from "../CompanyList";
 import CompanyDetail from "../CompanyDetail";
 
 import Nav from "../../Navigation";
-// import AppContainer from "../../Navigation/BottomTab";
+
+import AppContainer from "../../Navigation/BottomTab";
 
 class HomePage extends Component {
   render() {
     return (
       <Container>
         <View />
-        <Nav />
+        <AppContainer />
       </Container>
     );
   }
