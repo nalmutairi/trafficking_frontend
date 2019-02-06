@@ -1,5 +1,7 @@
 import { createStackNavigator } from "react-navigation";
 
+// import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
+
 import CategoryList from "../Components/CategoryList";
 import CompanyList from "../Components/CompanyList";
 import CompanyDetail from "../Components/CompanyDetail";
@@ -28,3 +30,24 @@ const Nav = createStackNavigator(
 );
 
 export default createAppContainer(Nav);
+
+// const BottomNavBar = createMaterialBottomTabNavigator(
+//   {
+//     CategoryList: { screen: CategoryList },
+//     CompanyList: { screen: CompanyList },
+//     CompanyDetail: CompanyDetail,
+//     DayList: DayList,
+//     Login: { screen: Login },
+
+//     AppointmentList: { screen: AppointmentList }
+//   },
+//   {
+//     initialRouteName: "CategoryList",
+//     activeColor: "#f0edf6",
+//     inactiveColor: "#3e2465",
+//     barStyle: { backgroundColor: "#694fad" }
+//   }
+// );
+
+// const Nav = createAppContainer(BottomNavBar);
+// export default Nav;
