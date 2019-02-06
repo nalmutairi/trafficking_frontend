@@ -31,10 +31,12 @@ class Login extends Component {
     return (
       <Container style={styles.container}>
         <Card>
-          <Image
-            style={styles.image}
-            source={{ uri: "http://104.248.38.127/media/iCleanU_28SUxkO.jpg" }}
-          />
+          {/* <Image
+          style={styles.image}
+          source={{
+            uri: "http://104.248.38.127/media/iCleanU_28SUxkO.jpg"
+          }}
+        /> */}
           <Item>
             <Icon active type="Entypo" name="user" />
             <Input

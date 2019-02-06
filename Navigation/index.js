@@ -8,8 +8,6 @@ import Login from "../Components/Login";
 
 import AppointmentList from "../Components/AppointmentList";
 
-import Profile from "../Components/Profile";
-
 import Account from "../Components/Account";
 
 const Nav = createStackNavigator(
@@ -19,7 +17,6 @@ const Nav = createStackNavigator(
     CompanyDetail: CompanyDetail,
     DayList: DayList,
     Login: Login,
-    Profile: Profile,
     Account: Account,
     AppointmentList: AppointmentList
   },

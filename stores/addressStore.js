@@ -1,6 +1,5 @@
-import { decorate, observable, action, computed, set } from "mobx";
+import { decorate, observable } from "mobx";
 import axios from "axios";
-import { ThemeConsumer } from "react-native-elements";
 
 // authStore
 // import authStore from "../stores/authStore";

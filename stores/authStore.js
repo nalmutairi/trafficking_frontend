@@ -1,4 +1,4 @@
-import { decorate, observable, action, computed } from "mobx";
+import { decorate, observable } from "mobx";
 import axios from "axios";
 import { AsyncStorage } from "react-native";
 import jwt_decode from "jwt-decode";
@@ -13,6 +13,8 @@ const instance = axios.create({
 class Store {
   constructor() {
     this.user = null;
+    this.loading = true;
+    this.checkForToken();
   }
 
   setCurrentUser(token) {
@@ -21,12 +23,14 @@ class Store {
         axios.defaults.headers.common["Authorization"] = `JWT ${token}`;
         const decodedUser = jwt_decode(token);
         this.user = decodedUser;
+        this.loading = false;
         addressStore.fetchAddresses();
       });
     } else {
       return AsyncStorage.removeItem("jwtToken").then(() => {
         delete axios.defaults.headers.common["Authorization"];
         this.user = null;
+        this.loading = false;
       });
     }
   }
@@ -47,7 +51,7 @@ class Store {
       .then(res => res.data)
       .then(user => this.setCurrentUser(user.token))
       .then(() => {
-        navigation.replace("Profile");
+        navigation.replace("Account");
       })
       .catch(err => console.error(err));
   }
@@ -77,7 +81,8 @@ class Store {
 }
 
 decorate(Store, {
-  user: observable
+  user: observable,
+  loading: observable
 });
 
 export default new Store();

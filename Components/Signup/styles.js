@@ -7,8 +7,8 @@ const styles = StyleSheet.create({
     alignItems: "stretch"
   },
   image: {
-    width: 200,
-    height: 200,
+    width: 150,
+    height: 150,
     alignSelf: "center",
     justifyContent: "center",
     alignItems: "center"
