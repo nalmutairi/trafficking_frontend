@@ -2,10 +2,17 @@ import React from "react";
 import { Icon } from "native-base";
 
 import { createBottomTabNavigator, createAppContainer } from "react-navigation";
+
+import TouchableBounce from "react-native/Libraries/Components/Touchable/TouchableBounce";
+
 import ProfileStack from "./ProfileStack";
+import CategoryStack from "./CategoryStack";
+import CompanyStack from "./CompanyStack";
 
 const BottomTab = createBottomTabNavigator(
   {
+    CategoryTab: CategoryStack,
+    CompanyTab: CompanyStack,
     ProfileTab: ProfileStack
   },
   {
@@ -13,9 +20,11 @@ const BottomTab = createBottomTabNavigator(
       tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state;
         let iconName;
-        if (routeName === "LolTab") {
-          iconName = "smiley";
-          iconType = "Octicons";
+        let iconType;
+        if (routeName === "CategoryTab") {
+          iconName = "home";
+        } else if (routeName === "CompanyTab") {
+          iconName = "list";
         } else if (routeName === "ProfileTab") {
           iconName = "person";
           iconType = "MaterialIcons";
@@ -23,7 +32,8 @@ const BottomTab = createBottomTabNavigator(
         return (
           <Icon name={iconName} style={{ color: tintColor }} type={iconType} />
         );
-      }
+      },
+      tabBarButtonComponent: TouchableBounce
     }),
     tabBarOptions: {
       showLabel: false,
