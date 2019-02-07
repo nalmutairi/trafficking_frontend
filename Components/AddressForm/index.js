@@ -25,21 +25,33 @@ class AddressForm extends Component {
       street: "",
       jaada: "",
       house: "",
-      phone: ""
+      phone: "",
+      haveAddress: false
     };
+
+    this.setDefaultAddress();
   }
-  render() {
-    let haveAddress;
+  setDefaultAddress() {
+    let address;
     let addressID;
     if (addressStore.addresses.length > 0) {
-      haveAddress = true;
+      address = addressStore.addresses[0];
       addressID = addressStore.addresses[0].id;
+      this.state.area = address.area;
+      this.state.block = address.block;
+      this.state.street = address.street;
+      this.state.jaada = address.jaada;
+      this.state.house = address.house;
+      this.state.phone = address.phone;
+      this.state.haveAddress = true;
+      // this.setDefaultAddress(address);
       // console.log(haveAddress);
       // console.log(addressID);
     } else {
-      haveAddress = false;
       // console.log(haveAddress);
     }
+  }
+  render() {
     return (
       <Overlay isVisible={true} borderRadius={15}>
         <Container>
@@ -47,58 +59,101 @@ class AddressForm extends Component {
             <Form>
               <Item stackedLabel>
                 <Label>Area</Label>
-                <Input
-                  // placeholder={userAddress.area}
-                  autoCapitalize="none"
-                  onChangeText={area => this.setState({ area })}
-                />
+                {this.state.haveAddress ? (
+                  <Input
+                    placeholder={this.state.area}
+                    autoCapitalize="none"
+                    onChangeText={area => this.setState({ area })}
+                  />
+                ) : (
+                  <Input
+                    autoCapitalize="none"
+                    onChangeText={area => this.setState({ area })}
+                  />
+                )}
               </Item>
               <Item stackedLabel>
                 <Label>Block</Label>
-                <Input
-                  // placeholder={userAddress.block}
-                  autoCapitalize="none"
-                  onChangeText={block => this.setState({ block })}
-                />
+                {this.state.haveAddress ? (
+                  <Input
+                    placeholder={this.state.block}
+                    autoCapitalize="none"
+                    onChangeText={block => this.setState({ block })}
+                  />
+                ) : (
+                  <Input
+                    autoCapitalize="none"
+                    onChangeText={block => this.setState({ block })}
+                  />
+                )}
               </Item>
               <Item stackedLabel>
                 <Label>Street</Label>
-                <Input
-                  // placeholder={userAddress.street}
-                  autoCapitalize="none"
-                  onChangeText={street => this.setState({ street })}
-                />
+                {this.state.haveAddress ? (
+                  <Input
+                    placeholder={this.state.street}
+                    autoCapitalize="none"
+                    onChangeText={street => this.setState({ street })}
+                  />
+                ) : (
+                  <Input
+                    autoCapitalize="none"
+                    onChangeText={street => this.setState({ street })}
+                  />
+                )}
               </Item>
               <Item stackedLabel>
                 <Label>Jaada</Label>
-                <Input
-                  autoCapitalize="none"
-                  onChangeText={jaada => this.setState({ jaada })}
-                />
+                {this.state.haveAddress ? (
+                  <Input
+                    placeholder={this.state.jaada}
+                    autoCapitalize="none"
+                    onChangeText={jaada => this.setState({ jaada })}
+                  />
+                ) : (
+                  <Input
+                    autoCapitalize="none"
+                    onChangeText={jaada => this.setState({ jaada })}
+                  />
+                )}
               </Item>
               <Item stackedLabel>
                 <Label>House</Label>
-                <Input
-                  // placeholder={userAddress.house}
-                  autoCapitalize="none"
-                  onChangeText={house => this.setState({ house })}
-                />
+                {this.state.haveAddress ? (
+                  <Input
+                    placeholder={this.state.house}
+                    autoCapitalize="none"
+                    onChangeText={house => this.setState({ house })}
+                  />
+                ) : (
+                  <Input
+                    autoCapitalize="none"
+                    onChangeText={house => this.setState({ house })}
+                  />
+                )}
               </Item>
               <Item stackedLabel>
                 <Label>Phone</Label>
-                <Input
-                  // placeholder={userAddress.phone}
-                  autoCapitalize="none"
-                  onChangeText={phone => this.setState({ phone })}
-                />
+                {this.state.haveAddress ? (
+                  <Input
+                    placeholder={this.state.phone}
+                    autoCapitalize="none"
+                    onChangeText={phone => this.setState({ phone })}
+                  />
+                ) : (
+                  <Input
+                    autoCapitalize="none"
+                    onChangeText={phone => this.setState({ phone })}
+                  />
+                )}
               </Item>
-              {haveAddress ? (
+              {this.state.haveAddress ? (
                 <Button
                   full
                   onPress={() =>
                     addressStore.updateAddress(
                       this.state,
-                      addressID,
+                      addressStore.addresses[0].id,
                       this.props.navigation
                     )
                   }

@@ -58,7 +58,7 @@ class Store {
 
   logoutUser(navigation) {
     this.setCurrentUser();
-    navigation.replace("Account");
+    () => navigation.replace("Account");
   }
 
   checkForToken = () => {

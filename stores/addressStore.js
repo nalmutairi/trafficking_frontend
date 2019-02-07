@@ -29,20 +29,17 @@ class AddressStore {
       .post("/address/create/", userInput)
       .then(res => res.data)
       .then(() => alert("address created"))
-      .then(() => {
-        navigation.replace("CategoryList");
-      })
+      .then(navigation.replace("CategoryList"))
       .catch(err => console.error(err));
   }
 
   updateAddress(userInput, addressID, navigation) {
+    console.log(userInput);
     instance
       .put(`address/${addressID}/update/`, userInput)
       .then(res => res.data)
       .then(() => alert("UPDATED"))
-      .then(() => {
-        navigation.replace("CategoryList");
-      })
+      .then(navigation.replace("CategoryList"))
       .catch(err => console.error(err));
   }
 }

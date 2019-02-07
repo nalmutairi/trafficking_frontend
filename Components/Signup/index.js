@@ -31,12 +31,6 @@ class Login extends Component {
     return (
       <Container style={styles.container}>
         <Card>
-          {/* <Image
-          style={styles.image}
-          source={{
-            uri: "http://104.248.38.127/media/iCleanU_28SUxkO.jpg"
-          }}
-        /> */}
           <Item>
             <Icon active type="Entypo" name="user" />
             <Input
@@ -55,6 +49,7 @@ class Login extends Component {
             />
           </Item>
           <Item>
+            <Icon active type="Entypo" name="edit" />
             <Input
               placeholder="First Name"
               autoCapitalize="none"
@@ -62,6 +57,7 @@ class Login extends Component {
             />
           </Item>
           <Item>
+            <Icon active type="Entypo" name="edit" />
             <Input
               placeholder="Last Name"
               autoCapitalize="none"
@@ -69,6 +65,7 @@ class Login extends Component {
             />
           </Item>
           <Item>
+            <Icon active type="Entypo" name="email" />
             <Input
               placeholder="Email Adress"
               autoCapitalize="none"
@@ -78,9 +75,8 @@ class Login extends Component {
           <Button
             full
             danger
-            onPress={
-              // () => console.log(this.state)
-              () => authStore.registerUser(this.state, this.props.navigation)
+            onPress={() =>
+              authStore.registerUser(this.state, this.props.navigation)
             }
           >
             <Text>SignUp</Text>
