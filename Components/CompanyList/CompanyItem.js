@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 
+// import { FluidNavigator, Transition } from "react-navigation-fluid-transitions";
+
+import { Image } from "react-native";
+
 import { withNavigation } from "react-navigation";
 // Native Base Components
 import {
@@ -27,13 +31,8 @@ class CompanyItem extends Component {
     const { company } = this.props;
     // the above line is equivalent to const company = this.props.company
 
-    let logo;
-    if (company.logo) {
-      logo = company.logo;
-    } else {
-      logo =
-        "http://maidcleanservices.ca/wp-content/uploads/2016/04/maidclean_green_leaf-300x276.jpg";
-    }
+    let logo = company.logo;
+
     return (
       <ListItem
         onPress={() => {
@@ -41,15 +40,16 @@ class CompanyItem extends Component {
         }}
       >
         <Left>
-          <Thumbnail
-            square
-            large
+          {/* <Transition shared={company.id}> */}
+          <Image
             source={{
               uri:
                 company.logo ||
                 "http://www.resetyourbody.com/wp-content/uploads/COMPANY_LOGO/123Chrysanthemum.jpg"
             }}
+            style={{ width: 100, height: 100 }}
           />
+          {/* </Transition> */}
 
           <Body>
             <Text>{company.name}</Text>

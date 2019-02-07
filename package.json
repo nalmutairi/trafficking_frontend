@@ -23,6 +23,7 @@
     "react-native-motion": "^1.0.0",
     "react-native-paper": "^2.10.1",
     "react-navigation": "^3.0.9",
+    "react-navigation-fluid-transitions": "^0.3.0",
     "react-navigation-material-bottom-tabs": "^1.0.0"
   },
   "devDependencies": {
