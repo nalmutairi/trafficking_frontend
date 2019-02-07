@@ -44,11 +44,6 @@ class AddressForm extends Component {
       this.state.house = address.house;
       this.state.phone = address.phone;
       this.state.haveAddress = true;
-      // this.setDefaultAddress(address);
-      // console.log(haveAddress);
-      // console.log(addressID);
-    } else {
-      // console.log(haveAddress);
     }
   }
   render() {

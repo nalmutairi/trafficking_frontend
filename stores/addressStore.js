@@ -1,9 +1,6 @@
 import { decorate, observable } from "mobx";
 import axios from "axios";
 
-// authStore
-// import authStore from "../stores/authStore";
-
 const instance = axios.create({
   baseURL: "http://104.248.38.127/"
 });
@@ -20,7 +17,6 @@ class AddressStore {
       .then(res => res.data)
       .then(addresses => (this.addresses = addresses))
       .then(() => (this.loading = false))
-      // .then(() => console.log("TESTING ADDRESS: ", this.addresses))
       .catch(err => console.log(err));
   }
 
