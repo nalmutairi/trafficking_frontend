@@ -1,4 +1,9 @@
-import { createStackNavigator } from "react-navigation";
+import { createStackNavigator, createAppContainer } from "react-navigation";
+
+// import {
+//   createFluidNavigator,
+//   Transition
+// } from "react-navigation-fluid-transitions";
 
 // import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 
@@ -11,17 +16,17 @@ import ProfileScreen from "../Components/Profile";
 
 import AppointmentList from "../Components/AppointmentList";
 
-//import Profile from "../Components/Profile";
-
-import { createAppContainer } from "react-navigation";
+import Account from "../Components/Account";
 
 const Nav = createStackNavigator(
+  // const Nav = createFluidNavigator(
   {
     CategoryList: CategoryList,
     CompanyList: CompanyList,
     CompanyDetail: CompanyDetail,
     DayList: DayList,
     Login: Login,
+
     AppointmentList: AppointmentList,
     ProfileScreen: ProfileScreen
   },

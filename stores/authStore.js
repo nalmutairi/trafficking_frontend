@@ -1,15 +1,24 @@
-import { decorate, observable, action, computed } from "mobx";
+import { decorate, observable } from "mobx";
 import axios from "axios";
 import { AsyncStorage } from "react-native";
 import jwt_decode from "jwt-decode";
 
+// //adddress store
+import addressStore from "../stores/addressStore";
+
 const instance = axios.create({
+<<<<<<< HEAD
   baseURL: "http:104.248.38.127/"
+=======
+  baseURL: "http://104.248.38.127"
+>>>>>>> master
 });
 
 class AuthStore {
   constructor() {
     this.user = null;
+    this.loading = true;
+    this.checkForToken();
   }
 
   setCurrentUser(token) {
@@ -18,17 +27,20 @@ class AuthStore {
         axios.defaults.headers.common["Authorization"] = `JWT ${token}`;
         const decodedUser = jwt_decode(token);
         this.user = decodedUser;
-        // this.loading = false;
+        this.loading = false;
+        addressStore.fetchAddresses();
       });
     } else {
       return AsyncStorage.removeItem("jwtToken").then(() => {
         delete axios.defaults.headers.common["Authorization"];
         this.user = null;
+        this.loading = false;
       });
     }
   }
 
   registerUser(userData, navigation) {
+    console.log(userData);
     instance
       .post("signup/", userData)
       .then(res => {
@@ -41,9 +53,15 @@ class AuthStore {
     instance
       .post("signin/", userData)
       .then(res => res.data)
+<<<<<<< HEAD
       .then(user => {
         this.setCurrentUser(user.token);
         navigation.navigate("Profile");
+=======
+      .then(user => this.setCurrentUser(user.token))
+      .then(() => {
+        navigation.replace("Account");
+>>>>>>> master
       })
       // .then(() => {
       //   navigation.replace("CoffeeList");
@@ -53,7 +71,7 @@ class AuthStore {
 
   logoutUser(navigation) {
     this.setCurrentUser();
-    navigation.navigate("Login");
+    () => navigation.replace("Account");
   }
 
   checkForToken = () => {
@@ -75,8 +93,14 @@ class AuthStore {
   };
 }
 
+<<<<<<< HEAD
 decorate(AuthStore, {
   user: observable
+=======
+decorate(Store, {
+  user: observable,
+  loading: observable
+>>>>>>> master
 });
 
 export default new AuthStore();

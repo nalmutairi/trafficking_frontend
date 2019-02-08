@@ -22,14 +22,20 @@ class App extends React.Component {
   }
 
   render() {
+
     if (!this.state.fontsAreLoaded) {
       return <AppLoading />;
     }
+<<<<<<< HEAD
     return (
       <Root>
         <HomePage />
       </Root>
     );
+=======
+    return <HomePage />;
+
+>>>>>>> master
   }
 }
 
