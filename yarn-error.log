@@ -1,25 +1,25 @@
 Arguments: 
-  /usr/local/Cellar/node/11.5.0/bin/node /usr/local/Cellar/yarn/1.12.3/libexec/bin/yarn.js
+  /usr/local/Cellar/node/11.9.0/bin/node /usr/local/Cellar/yarn/1.13.0/libexec/bin/yarn.js install
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
 Yarn version: 
-  1.12.3
+  1.13.0
 
 Node version: 
-  11.5.0
+  11.9.0
 
 Platform: 
   darwin x64
 
 Trace: 
-  SyntaxError: /Users/noufalmutairi/Development/projects/slavery-frontend/package.json: Unexpected token < in JSON at position 684
+  SyntaxError: /Users/noufalmutairi/Development/projects/slavery-frontend/package.json: Unexpected token < in JSON at position 645
       at JSON.parse (<anonymous>)
-      at /usr/local/Cellar/yarn/1.12.3/libexec/lib/cli.js:1631:59
+      at /usr/local/Cellar/yarn/1.13.0/libexec/lib/cli.js:1625:59
       at Generator.next (<anonymous>)
-      at step (/usr/local/Cellar/yarn/1.12.3/libexec/lib/cli.js:304:30)
-      at /usr/local/Cellar/yarn/1.12.3/libexec/lib/cli.js:315:13
+      at step (/usr/local/Cellar/yarn/1.13.0/libexec/lib/cli.js:304:30)
+      at /usr/local/Cellar/yarn/1.13.0/libexec/lib/cli.js:315:13
 
 npm manifest: 
   {
@@ -42,17 +42,20 @@ npm manifest:
       "react": "16.5.0",
       "react-mobx": "^0.0.4",
       "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+      "react-native-accordion": "^1.0.1",
       "react-native-calendars": "^1.22.0",
+  <<<<<<< HEAD
       "react-native-card-flip": "^1.0.4",
-      "react-native-elements": "^1.0.0",
-  <<<<<<< Updated upstream
-      "react-native-paper": "^2.10.1",
-      "react-navigation": "^3.0.9",
-      "react-navigation-material-bottom-tabs": "^1.0.0"
+      "react-native-collapsible-list": "^1.0.0",
   =======
+  >>>>>>> master
+      "react-native-elements": "^1.0.0",
+      "react-native-motion": "^1.0.0",
+      "react-native-paper": "^2.10.1",
+      "react-native-simple-expand": "^0.1.3",
       "react-navigation": "^3.0.9",
-      "start": "^5.1.0"
-  >>>>>>> Stashed changes
+      "react-navigation-fluid-transitions": "^0.3.0",
+      "react-navigation-material-bottom-tabs": "^1.0.0"
     },
     "devDependencies": {
       "babel-preset-expo": "^5.0.0"
@@ -3649,6 +3652,16 @@ Lockfile:
       p-locate "^2.0.0"
       path-exists "^3.0.0"
   
+  lodash.chunk@*:
+    version "4.2.0"
+    resolved "https://registry.yarnpkg.com/lodash.chunk/-/lodash.chunk-4.2.0.tgz#66e5ce1f76ed27b4303d8c6512e8d1216e8106bc"
+    integrity sha1-ZuXOH3btJ7QwPYxlEujRIW6BBrw=
+  
+  lodash.clamp@*:
+    version "4.0.3"
+    resolved "https://registry.yarnpkg.com/lodash.clamp/-/lodash.clamp-4.0.3.tgz#5c24bedeeeef0753560dc2b4cb4671f90a6ddfaa"
+    integrity sha1-XCS+3u7vB1NWDcK0y0Zx+Qpt36o=
+  
   lodash.debounce@^4.0.8:
     version "4.0.8"
     resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
@@ -3708,6 +3721,11 @@ Lockfile:
     version "4.4.0"
     resolved "https://registry.yarnpkg.com/lodash.pick/-/lodash.pick-4.4.0.tgz#52f05610fff9ded422611441ed1fc123a03001b3"
     integrity sha1-UvBWEP/53tQiYRRB7R/BI6AwAbM=
+  
+  lodash.sortby@*:
+    version "4.7.0"
+    resolved "https://registry.yarnpkg.com/lodash.sortby/-/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
+    integrity sha1-7dFMgk4sycHgsKG0K7UhBRakJDg=
   
   lodash.throttle@^4.1.1:
     version "4.1.1"
@@ -4792,15 +4810,7 @@ Lockfile:
     dependencies:
       asap "~2.0.3"
   
-  prop-types@15.5.10:
-    version "15.5.10"
-    resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
-    integrity sha1-J5ffwxJhguOpXj37suiT3ddFYVQ=
-    dependencies:
-      fbjs "^0.8.9"
-      loose-envify "^1.3.1"
-  
-  prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2:
+  prop-types@*, prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2:
     version "15.6.2"
     resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
     integrity sha512-3pboPvLiWD7dkI3qf3KbUe6hKFKa52w+AE0VCqECtf+QHAKgOL37tTaNCnuX1nAAQ4ZhyP+kYVKf8rLmJ/feDQ==
@@ -4910,6 +4920,13 @@ Lockfile:
       react "^16.2.0"
       react-dom "^16.2.0"
   
+  react-native-accordion@^1.0.1:
+    version "1.0.1"
+    resolved "https://registry.yarnpkg.com/react-native-accordion/-/react-native-accordion-1.0.1.tgz#1086ac012b9d7c90cd1efd014f2804baa16a1f5b"
+    integrity sha1-EIasASudfJDNHv0BTygEuqFqH1s=
+    dependencies:
+      react-tween-state "0.0.5"
+  
   react-native-branch@2.2.5:
     version "2.2.5"
     resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-2.2.5.tgz#4074dd63b4973e6397d9ce50e97b57c77a518e9d"
@@ -4925,6 +4942,7 @@ Lockfile:
       prop-types "^15.5.10"
       xdate "^0.8.0"
   
+  <<<<<<< HEAD
   react-native-card-flip@^1.0.4:
     version "1.0.4"
     resolved "https://registry.yarnpkg.com/react-native-card-flip/-/react-native-card-flip-1.0.4.tgz#cf01fccbb98697842de7134a4f7b51ee69da430a"
@@ -4932,6 +4950,15 @@ Lockfile:
     dependencies:
       prop-types "15.5.10"
   
+  react-native-collapsible-list@^1.0.0:
+    version "1.0.0"
+    resolved "https://registry.yarnpkg.com/react-native-collapsible-list/-/react-native-collapsible-list-1.0.0.tgz#81cbf0a2e141473f9f6d5a3baefd40a4b21bb249"
+    integrity sha512-NPv3RHMbHZ2UFG/ixciu2MYhrlKSCLjcfVNITjojodkIqQGUecNsoJ/5t5faxvZlLdLLy0rJ4yHClxI1Mp2Fvw==
+    dependencies:
+      prop-types "^15.6.1"
+  
+  =======
+  >>>>>>> master
   react-native-drawer@2.5.1:
     version "2.5.1"
     resolved "https://registry.yarnpkg.com/react-native-drawer/-/react-native-drawer-2.5.1.tgz#08b9314184f48c724f1b467f8859797369798654"
@@ -4991,9 +5018,16 @@ Lockfile:
       prop-types "^15.6.2"
       react-native-iphone-x-helper "^1.0.3"
   
-  "react-native-maps@github:expo/react-native-maps#v0.22.1-exp.0":
+  react-native-maps@expo/react-native-maps#v0.22.1-exp.0:
     version "0.22.1"
     resolved "https://codeload.github.com/expo/react-native-maps/tar.gz/e6f98ff7272e5d0a7fe974a41f28593af2d77bb2"
+  
+  react-native-motion@^1.0.0:
+    version "1.0.0"
+    resolved "https://registry.yarnpkg.com/react-native-motion/-/react-native-motion-1.0.0.tgz#7181b4528aba4af9437fc5c1f3196da1f8f08c07"
+    integrity sha512-/4dFVdwqBa2K9FBixlO0dT74c7sKlMynMmFypXIaiOTWkdUiOTZvWn/WCiHrNiNQLjAG/DmNO6sYq/nNh7jxow==
+    dependencies:
+      prop-types "^15.5.10"
   
   react-native-paper@^2.10.1:
     version "2.10.1"
@@ -5045,6 +5079,11 @@ Lockfile:
     version "1.0.0-alpha.22"
     resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-1.0.0-alpha.22.tgz#7a120377b52aa9bbb94d0b8541a014026be9289b"
     integrity sha512-kSyAt0AeVU6N7ZonfV6dP6iZF8B7Bce+tk3eujXhzBGsLg0VSLnU7uE9VqJF0xdQrHR91ZjGgVMieo/8df9KTA==
+  
+  react-native-simple-expand@^0.1.3:
+    version "0.1.3"
+    resolved "https://registry.yarnpkg.com/react-native-simple-expand/-/react-native-simple-expand-0.1.3.tgz#e14d663ee838787c80df8635560b073285e86645"
+    integrity sha1-4U1mPug4eHyA34Y1VgsHMoXoZkU=
   
   react-native-status-bar-height@^2.2.0:
     version "2.2.0"
@@ -5153,6 +5192,16 @@ Lockfile:
     dependencies:
       react-native-tab-view "^1.2.0"
   
+  react-navigation-fluid-transitions@^0.3.0:
+    version "0.3.0"
+    resolved "https://registry.yarnpkg.com/react-navigation-fluid-transitions/-/react-navigation-fluid-transitions-0.3.0.tgz#75f0f22e91ae1a4b05e07aabfefda51957cc3896"
+    integrity sha512-E9TxJUaMpfJR7GO3wnaHneGfF5+JxZop5w/RH1eoASO+4la95yMdYQhbAJ7w91K52ckW1A+JRvcm8zImuP+yvA==
+    dependencies:
+      lodash.chunk "*"
+      lodash.clamp "*"
+      lodash.sortby "*"
+      prop-types "*"
+  
   react-navigation-material-bottom-tabs@^1.0.0:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/react-navigation-material-bottom-tabs/-/react-navigation-material-bottom-tabs-1.0.0.tgz#4fc3f21c57891e3a5bff88679afd84801d69adb7"
@@ -5218,6 +5267,13 @@ Lockfile:
     dependencies:
       global "^4.3.0"
       react-proxy "^1.1.7"
+  
+  react-tween-state@0.0.5:
+    version "0.0.5"
+    resolved "https://registry.yarnpkg.com/react-tween-state/-/react-tween-state-0.0.5.tgz#bd25c27f2558b839a6c7aee3b85fab967760d1d2"
+    integrity sha1-vSXCfyVYuDmmx67juF+rlndg0dI=
+    dependencies:
+      tween-functions "^1.0.1"
   
   react-tween-state@^0.1.5:
     version "0.1.5"
@@ -5774,11 +5830,6 @@ Lockfile:
     version "0.1.4"
     resolved "https://registry.yarnpkg.com/stacktrace-parser/-/stacktrace-parser-0.1.4.tgz#01397922e5f62ecf30845522c95c4fe1d25e7d4e"
     integrity sha1-ATl5IuX2Ls8whFUiyVxP4dJefU4=
-  
-  start@^5.1.0:
-    version "5.1.0"
-    resolved "https://registry.yarnpkg.com/start/-/start-5.1.0.tgz#1c171f0ef9487f56d0ab9a755ace860169208763"
-    integrity sha1-HBcfDvlIf1bQq5p1Ws6GAWkgh2M=
   
   static-extend@^0.1.1:
     version "0.1.2"

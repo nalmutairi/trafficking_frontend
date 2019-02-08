@@ -33,7 +33,6 @@ class Login extends Component {
 
   render() {
     return (
-<<<<<<< HEAD
       <ScrollView>
         <Container style={styles.container}>
           <Card>
@@ -80,43 +79,6 @@ class Login extends Component {
           </Card>
         </Container>
       </ScrollView>
-=======
-      <Container style={styles.container}>
-        <Card>
-          <Image
-            style={styles.image}
-            source={{
-              uri: "http://104.248.38.127/media/iCleanU_28SUxkO.jpg"
-            }}
-          />
-          <Item>
-            <Icon active type="Entypo" name="user" />
-            <Input
-              placeholder="Username"
-              autoCapitalize="none"
-              onChangeText={username => this.setState({ username })}
-            />
-          </Item>
-          <Item>
-            <Icon active type="Entypo" name="key" />
-            <Input
-              placeholder="Password"
-              autoCapitalize="none"
-              secureTextEntry={true}
-              onChangeText={password => this.setState({ password })}
-            />
-          </Item>
-          <Button
-            full
-            onPress={() =>
-              authStore.loginUser(this.state, this.props.navigation)
-            }
-          >
-            <Text>Login</Text>
-          </Button>
-        </Card>
-      </Container>
->>>>>>> master
     );
   }
 }

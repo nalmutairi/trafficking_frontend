@@ -20,11 +20,8 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-native-accordion": "^1.0.1",
     "react-native-calendars": "^1.22.0",
-<<<<<<< HEAD
     "react-native-card-flip": "^1.0.4",
     "react-native-collapsible-list": "^1.0.0",
-=======
->>>>>>> master
     "react-native-elements": "^1.0.0",
     "react-native-motion": "^1.0.0",
     "react-native-paper": "^2.10.1",
