@@ -7,11 +7,7 @@ import jwt_decode from "jwt-decode";
 import addressStore from "../stores/addressStore";
 
 const instance = axios.create({
-<<<<<<< HEAD
   baseURL: "http:104.248.38.127/"
-=======
-  baseURL: "http://104.248.38.127"
->>>>>>> master
 });
 
 class AuthStore {
@@ -53,15 +49,9 @@ class AuthStore {
     instance
       .post("signin/", userData)
       .then(res => res.data)
-<<<<<<< HEAD
-      .then(user => {
-        this.setCurrentUser(user.token);
-        navigation.navigate("Profile");
-=======
       .then(user => this.setCurrentUser(user.token))
       .then(() => {
         navigation.replace("Account");
->>>>>>> master
       })
       // .then(() => {
       //   navigation.replace("CoffeeList");
@@ -93,14 +83,10 @@ class AuthStore {
   };
 }
 
-<<<<<<< HEAD
-decorate(AuthStore, {
-  user: observable
-=======
+
 decorate(Store, {
   user: observable,
   loading: observable
->>>>>>> master
 });
 
 export default new AuthStore();
