@@ -21,10 +21,12 @@ class App extends React.Component {
   }
 
   render() {
+
     if (!this.state.fontsAreLoaded) {
       return <AppLoading />;
     }
     return <HomePage />;
+
   }
 }
 

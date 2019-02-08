@@ -1,4 +1,4 @@
-import { createStackNavigator } from "react-navigation";
+import { createStackNavigator, createAppContainer } from "react-navigation";
 
 // import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 
@@ -10,9 +10,7 @@ import Login from "../Components/Login";
 
 import AppointmentList from "../Components/AppointmentList";
 
-import Profile from "../Components/Profile";
-
-import { createAppContainer } from "react-navigation";
+import Account from "../Components/Account";
 
 const Nav = createStackNavigator(
   {
@@ -21,11 +19,13 @@ const Nav = createStackNavigator(
     CompanyDetail: CompanyDetail,
     DayList: DayList,
     Login: Login,
-
+    Account: Account,
     AppointmentList: AppointmentList
   },
   {
+
     initialRouteName: "CategoryList"
+
   }
 );
 
