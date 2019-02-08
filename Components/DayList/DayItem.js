@@ -37,8 +37,8 @@ class DayItem extends Component {
       const days = company.days;
 
       const test = days.filter(day => {
-        console.log("Testing day objects reception: ", day);
-        console.log("YOOOOOO", this.state.day.dateString);
+        // console.log("Testing day objects reception: ", day);
+        // console.log("YOOOOOO", this.state.day.dateString);
         return day.name === this.state.day.dateString;
       });
 

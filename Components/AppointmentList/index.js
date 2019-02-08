@@ -15,31 +15,20 @@ class AppointmentList extends Component {
   isUser() {
     if (AuthStore.user && AppointmentStore.appointments.length > 0) {
       return <Checkout navigation={this.props.navigation} />;
-    } else if (!AuthStore.user) {
+    } else if (!AuthStore.user && AppointmentStore.appointments.length > 0) {
       return (
-        <Button onPress={() => this.props.navigation.navigate("Login")}>
+        <Button
+          block
+          info
+          onPress={() => this.props.navigation.navigate("Login")}
+        >
           <Text>Log in to checkout</Text>
         </Button>
       );
-    }
-  }
-
-  isEmpty() {
-    const list = AppointmentStore.appointments;
-    let content;
-    console.log("LIST", list);
-    if (list.length > 0) {
-      console.log("im in list");
-      content = list.map((item, index) => (
-        <AppointmentItem appointment={item} key={index} />
-      ));
-
-      return <List>{content}</List>;
     } else {
-      console.log("im not in list");
       return (
         <Content>
-          <Text>IM TIRED</Text>
+          <Text>YOU GOTTA ADD STUFF TO YOUR CART SON</Text>
           <Thumbnail
             source={{
               uri:
@@ -51,6 +40,40 @@ class AppointmentList extends Component {
       );
     }
   }
+
+  isEmpty() {
+    const list = AppointmentStore.appointments;
+    let content;
+    if (list.length > 0) {
+      console.log("Appointment List is not empty yeeha!");
+      content = list.map((item, index) => (
+        <AppointmentItem appointment={item} key={index} />
+      ));
+      return <List>{content}</List>;
+    } else {
+      console.log("Appointment List is empty oh no!");
+      return <Content />;
+    }
+  }
+
+  // reservedStuff() {
+  //   const list = AppointmentStore.reservedSlots;
+  //   let content;
+  //   if (list.length > 0) {
+  //     AppointmentStore.pastAppointments();
+  //     const list2 = AppointmentStore.pendingSlots;
+  //     if (list2.length > 0) {
+  //       content = list.map((item, index) => (
+  //         <AppointmentItem appointment={item} key={index} />
+  //       ));
+  //
+  //       return <List>{content}</List>;
+  //     }
+  //   } else {
+  //     console.log("NO PAST APPOINTMENTS BUD");
+  //     return <Content />;
+  //   }
+  // }
   render() {
     return (
       <Content>

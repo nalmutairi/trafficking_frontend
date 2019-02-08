@@ -15,14 +15,40 @@ class AppointmentStore {
     this.pastSlots = [];
   }
 
+  pastAppointments(reservedSlots) {
+    const today = new Date();
+    reservedSlots.forEach(appointment => {
+      let date = appointment.date;
+      let time = appointment.start_time;
+      let appointmentTime = new Date(
+        parseInt(date.slice(0, 4)),
+        parseInt(date.slice(5, 7) - 1),
+        parseInt(date.slice(8, 10)),
+        parseInt(time.slice(0, 2)),
+        parseInt(time.slice(3, 5)),
+        parseInt(time.slice(6, 8))
+      );
+
+      if (appointmentTime > today) {
+        this.pendingSlots.push(appointment);
+      } else if (appointmentTime < today) {
+        this.pastSlots.push(appointment);
+      }
+    });
+  }
+
   fetchUserAppointments() {
     if (AuthStore.user) {
-      axios
-        .get("http://104.248.38.127/slot/list/")
+      instance
+        .get("slot/list/")
         .then(res => res.data)
         .then(slots => {
           this.reservedSlots = slots;
           console.log("hello reserved", this.reservedSlots);
+        })
+        .then(() => {
+          this.pastAppointments(this.reservedSlots);
+          console.log("I FETCHED STUFF");
         })
         .catch(err => console.error(err));
     }
@@ -47,44 +73,11 @@ class AppointmentStore {
     this.appointments = this.appointments.filter(appointment => {
       return appointment.id !== app.id;
     });
-    console.log("REMOVE", this.appointments);
-  }
-
-  pastAppointments() {
-    let q = 0;
-    const today = new Date();
-
-    console.log("woooo", this.reservedSlots);
-    this.reservedSlots.forEach(appointment => {
-      console.log("in appointment woo");
-      let date = appointment.date;
-      console.log("YEEEEHA", date);
-      let time = appointment.start_time;
-      let appointmentTime = new Date(
-        parseInt(date.slice(0, 4)),
-        parseInt(date.slice(5, 7) - 1),
-        parseInt(date.slice(8, 10)),
-        parseInt(time.slice(0, 2)),
-        parseInt(time.slice(3, 5)),
-        parseInt(time.slice(6, 8))
-      );
-
-      if (appointmentTime > today) {
-        this.pendingSlots.push(appointment);
-        console.log("ITS BEFORE TODAY", appointment);
-      } else if (appointmentTime < today) {
-        this.pastSlots.push(appointment);
-        console.log("WHAT", appointment);
-      }
-      q = q + 1;
-    });
   }
 
   checkout(navigation) {
     console.log("CHECKOUT FETCH", this.reservedSlots);
     this.appointments.forEach(appointment => {
-      console.log(appointment);
-      console.log("USER", AuthStore.user.user_id);
       axios
         .put("http://104.248.38.127/slot/" + appointment.id + "/update/", {
           user: AuthStore.user.user_id
@@ -97,7 +90,6 @@ class AppointmentStore {
     });
 
     this.appointments = [];
-    this.pastAppointments();
   }
 }
 

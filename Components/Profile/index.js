@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import { ScrollView, View, TouchableOpacity } from "react-native";
 import { observer } from "mobx-react";
 // NativeBase Components
 import {
@@ -14,27 +15,34 @@ import {
   List,
   Accordion
 } from "native-base";
+
+import { CollapsibleList } from "react-native-collapsible-list";
 import authStore from "../../stores/authStore";
 import addressStore from "../../stores/addressStore";
 import AppointmentStore from "../../stores/appointmentStore";
 
+import OrderItem from "./OrderItem";
 import SlotItem from "../SlotList/SlotItem";
 import SlotList from "../SlotList";
-const dataArray = [
-  {
-    title: "Pending Orders",
-    content: <SlotList slot={AppointmentStore.pendingSlots} />
-  },
-  {
-    title: "Past Orders",
-    content: <SlotList slot={AppointmentStore.pastSlots} />
-  }
-];
 
+import OrderList from "./OrderList";
+// const dataArray = [
+//   {
+//     title: "Pending Orders",
+//     body: <OrderList order={AppointmentStore.pendingSlots} />
+//   },
+//   {
+//     title: "Past Orders",
+//     body: <OrderList order={AppointmentStore.pastSlots} />
+//   }
+// ];
+// var Accordion = require("react-native-accordion");
 class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      pending: false,
+      past: false,
       phone: "",
       area: "",
       block: "",
@@ -43,18 +51,53 @@ class Profile extends Component {
       jaada: "",
       user: authStore.user
     };
-    AppointmentStore.pastAppointments();
+  }
+
+  componentDidMount() {
+    AppointmentStore.fetchUserAppointments();
+    console.log("UPDATING CONSOLE");
+  }
+
+  pressPending() {
+    this.setState({ pending: !this.state.pending });
+  }
+
+  pressPast() {
+    this.setState({ past: !this.state.past });
+  }
+
+  pendingslotsAvailable() {
+    if (this.state.pending) {
+      console.log("STUFF");
+      console.log("Reserved", AppointmentStore.reservedSlots);
+      let pendingslots = AppointmentStore.pendingSlots;
+      let PendingSlotList;
+      if (pendingslots) {
+        PendingSlotList = pendingslots.map(slot => (
+          <OrderItem order={slot} key={slot.id} />
+        ));
+      }
+      console.log("PEEEE: ", PendingSlotList);
+      return PendingSlotList;
+    }
+  }
+
+  pastslotsAvailable() {
+    if (this.state.past) {
+      let pastslots = AppointmentStore.pastSlots;
+      let PastSlotList;
+      if (pastslots) {
+        PastSlotList = pastslots.map(slot => (
+          <OrderItem order={slot} key={slot.id} />
+        ));
+      }
+      console.log("PAAAA: ", PastSlotList);
+      return PastSlotList;
+    }
   }
   render() {
-    console.log(authStore.user);
-    console.log("APPOINTMENT PAST: ", AppointmentStore.pendingSlots);
-    let slots = AppointmentStore.pendingSlots;
-    let SlotList;
-    if (slots) {
-      SlotList = slots.map(slot => <SlotItem slot={slot} key={slot.id} />);
-    }
     return (
-      <Container>
+      <ScrollView>
         <Content>
           <Form>
             <Item stackedLabel>
@@ -116,13 +159,16 @@ class Profile extends Component {
               <Text>Create Address</Text>
             </Button>
           </Form>
-
-          <List>{SlotList}</List>
+          <TouchableOpacity onPress={() => this.pressPending()}>
+            <Text>Pending Slots</Text>
+          </TouchableOpacity>
+          {this.pendingslotsAvailable()}
+          <TouchableOpacity onPress={() => this.pressPast()}>
+            <Text>Past Slots</Text>
+          </TouchableOpacity>
+          {this.pastslotsAvailable()}
         </Content>
-        <Content padder>
-          <Accordion dataArray={dataArray} icon="add" expandedIcon="remove" />
-        </Content>
-      </Container>
+      </ScrollView>
 
       // <Card>
       //   <CardItem>

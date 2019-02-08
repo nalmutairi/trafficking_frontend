@@ -1,5 +1,6 @@
 import { createStackNavigator } from "react-navigation";
 
+import ProfileScreen from "../Components/Profile";
 import AppointmentList from "../Components/AppointmentList";
 const CartStack = createStackNavigator(
   {
