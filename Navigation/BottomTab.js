@@ -10,12 +10,22 @@ import TouchableBounce from "react-native/Libraries/Components/Touchable/Touchab
 import ProfileStack from "./ProfileStack";
 import CategoryStack from "./CategoryStack";
 import CompanyStack from "./CompanyStack";
+<<<<<<< HEAD
+import CartStack from "./CartStack";
+const BottomTab = createBottomTabNavigator(
+  {
+    CategoryTab: CategoryStack,
+    CompanyTab: CompanyStack,
+    ProfileTab: ProfileStack,
+    CartTab: CartStack
+=======
 
 const BottomTab = createMaterialBottomTabNavigator(
   {
     Category: { screen: CategoryStack },
     List: { screen: CompanyStack },
     Profile: { screen: ProfileStack }
+>>>>>>> master
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -30,6 +40,8 @@ const BottomTab = createMaterialBottomTabNavigator(
         } else if (routeName === "Profile") {
           iconName = "person";
           iconType = "MaterialIcons";
+        } else if (routeName == "CartTab") {
+          iconName = "cart";
         }
         return (
           <Icon name={iconName} style={{ color: tintColor }} type={iconType} />

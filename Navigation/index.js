@@ -12,6 +12,7 @@ import CompanyList from "../Components/CompanyList";
 import CompanyDetail from "../Components/CompanyDetail";
 import DayList from "../Components/DayList";
 import Login from "../Components/Login";
+import ProfileScreen from "../Components/Profile";
 
 import AppointmentList from "../Components/AppointmentList";
 
@@ -25,13 +26,12 @@ const Nav = createStackNavigator(
     CompanyDetail: CompanyDetail,
     DayList: DayList,
     Login: Login,
-    Account: Account,
-    AppointmentList: AppointmentList
+
+    AppointmentList: AppointmentList,
+    ProfileScreen: ProfileScreen
   },
   {
-
     initialRouteName: "CategoryList"
-
   }
 );
 

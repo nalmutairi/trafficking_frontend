@@ -11,12 +11,12 @@ class CompanyStore {
   }
 
   fetchAllCompanies() {
+    const today = new Date();
     axios
       .get("http://104.248.38.127/company/list/")
       .then(res => res.data)
       .then(companies => {
         this.companies = companies;
-        // console.log(this.companies);
       })
       .catch(err => console.error(err));
   }

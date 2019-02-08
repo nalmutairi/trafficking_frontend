@@ -4,6 +4,7 @@ import SlotItem from "./SlotItem";
 
 class SlotList extends Component {
   render() {
+    let company = this.props.company;
     let slots = this.props.day[0];
     if (slots) {
       slots = this.props.day[0].slots;
@@ -11,7 +12,9 @@ class SlotList extends Component {
     }
     let SlotList;
     if (slots) {
-      SlotList = slots.map(slot => <SlotItem slot={slot} key={slot.id} />);
+      SlotList = slots.map(slot => (
+        <SlotItem slot={slot} company={company} key={slot.id} />
+      ));
     }
     if (SlotList) {
       return <List>{SlotList}</List>;

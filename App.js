@@ -1,6 +1,7 @@
 import React from "react";
 import { Font, AppLoading } from "expo";
 
+import { Root } from "native-base";
 // Component
 import HomePage from "./Components/HomePage";
 
@@ -25,8 +26,16 @@ class App extends React.Component {
     if (!this.state.fontsAreLoaded) {
       return <AppLoading />;
     }
+<<<<<<< HEAD
+    return (
+      <Root>
+        <HomePage />
+      </Root>
+    );
+=======
     return <HomePage />;
 
+>>>>>>> master
   }
 }
 
