@@ -26,16 +26,12 @@ class App extends React.Component {
     if (!this.state.fontsAreLoaded) {
       return <AppLoading />;
     }
-<<<<<<< HEAD
+
     return (
       <Root>
         <HomePage />
       </Root>
     );
-=======
-    return <HomePage />;
-
->>>>>>> master
   }
 }
 
