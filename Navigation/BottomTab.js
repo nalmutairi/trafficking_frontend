@@ -12,15 +12,12 @@ import CategoryStack from "./CategoryStack";
 import CompanyStack from "./CompanyStack";
 import CartStack from "./CartStack";
 
-
-
 const BottomTab = createMaterialBottomTabNavigator(
   {
     Category: { screen: CategoryStack },
     List: { screen: CompanyStack },
     Profile: { screen: ProfileStack },
-    Cart: {screen: CartStack }
-
+    Cart: { screen: CartStack }
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({

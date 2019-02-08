@@ -7,7 +7,7 @@ import jwt_decode from "jwt-decode";
 import addressStore from "../stores/addressStore";
 
 const instance = axios.create({
-  baseURL: "http:104.248.38.127/"
+  baseURL: "http://104.248.38.127"
 });
 
 class AuthStore {
@@ -83,8 +83,7 @@ class AuthStore {
   };
 }
 
-
-decorate(Store, {
+decorate(AuthStore, {
   user: observable,
   loading: observable
 });
