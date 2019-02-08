@@ -10,22 +10,17 @@ import TouchableBounce from "react-native/Libraries/Components/Touchable/Touchab
 import ProfileStack from "./ProfileStack";
 import CategoryStack from "./CategoryStack";
 import CompanyStack from "./CompanyStack";
-<<<<<<< HEAD
 import CartStack from "./CartStack";
-const BottomTab = createBottomTabNavigator(
-  {
-    CategoryTab: CategoryStack,
-    CompanyTab: CompanyStack,
-    ProfileTab: ProfileStack,
-    CartTab: CartStack
-=======
+
+
 
 const BottomTab = createMaterialBottomTabNavigator(
   {
     Category: { screen: CategoryStack },
     List: { screen: CompanyStack },
-    Profile: { screen: ProfileStack }
->>>>>>> master
+    Profile: { screen: ProfileStack },
+    Cart: {screen: CartStack }
+
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
