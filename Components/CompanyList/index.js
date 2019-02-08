@@ -33,7 +33,7 @@ class CompanyList extends Component {
     }
 
     return (
-      <ScrollView>
+      <ScrollView style={{ backgroundColor: "rgba(7, 183, 10, 0.03)" }}>
         <List>{CompanyList}</List>
       </ScrollView>
     );

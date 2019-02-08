@@ -1,5 +1,10 @@
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
+// import {
+//   createFluidNavigator,
+//   Transition
+// } from "react-navigation-fluid-transitions";
+
 // import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 
 import CategoryList from "../Components/CategoryList";
@@ -13,6 +18,7 @@ import AppointmentList from "../Components/AppointmentList";
 import Account from "../Components/Account";
 
 const Nav = createStackNavigator(
+  // const Nav = createFluidNavigator(
   {
     CategoryList: CategoryList,
     CompanyList: CompanyList,

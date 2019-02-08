@@ -4,7 +4,8 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "stretch"
+    alignItems: "stretch",
+    backgroundColor: "rgba(221, 60, 64, 0.06)"
   },
   image: {
     width: 200,

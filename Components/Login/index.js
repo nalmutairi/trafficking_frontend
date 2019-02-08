@@ -3,7 +3,16 @@ import { observer } from "mobx-react";
 import { withNavigation } from "react-navigation";
 
 // NativeBase Components
-import { Item, Input, Button, Text, Container, Icon } from "native-base";
+import {
+  Item,
+  Input,
+  Button,
+  Text,
+  Container,
+  Icon,
+  Content,
+  View
+} from "native-base";
 import { Card, Image } from "react-native-elements";
 
 // Store
