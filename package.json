@@ -23,6 +23,7 @@
     "react-native-card-flip": "^1.0.4",
     "react-native-collapsible-list": "^1.0.0",
     "react-native-elements": "^1.0.0",
+    "react-native-maps": "^0.23.0",
     "react-native-motion": "^1.0.0",
     "react-native-paper": "^2.10.1",
     "react-native-simple-expand": "^0.1.3",
