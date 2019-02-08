@@ -3,16 +3,7 @@ import { observer } from "mobx-react";
 import { withNavigation } from "react-navigation";
 
 // NativeBase Components
-import {
-  Item,
-  Input,
-  Button,
-  Text,
-  Container,
-  Icon,
-  Content,
-  View
-} from "native-base";
+import { Item, Input, Button, Text, Container, Icon } from "native-base";
 import { Card, Image } from "react-native-elements";
 
 // Store
@@ -22,11 +13,17 @@ import authStore from "../../stores/authStore";
 import styles from "./styles";
 
 class Login extends Component {
+  static navigationOptions = {
+    title: "Login"
+  };
   constructor(props) {
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      first_name: "",
+      last_name: "",
+      email: ""
     };
   }
 
@@ -34,12 +31,6 @@ class Login extends Component {
     return (
       <Container style={styles.container}>
         <Card>
-          <Image
-            style={styles.image}
-            source={{
-              uri: "http://104.248.38.127/media/iCleanU_28SUxkO.jpg"
-            }}
-          />
           <Item>
             <Icon active type="Entypo" name="user" />
             <Input
@@ -57,18 +48,42 @@ class Login extends Component {
               onChangeText={password => this.setState({ password })}
             />
           </Item>
+          <Item>
+            <Icon active type="Entypo" name="edit" />
+            <Input
+              placeholder="First Name"
+              autoCapitalize="none"
+              onChangeText={first_name => this.setState({ first_name })}
+            />
+          </Item>
+          <Item>
+            <Icon active type="Entypo" name="edit" />
+            <Input
+              placeholder="Last Name"
+              autoCapitalize="none"
+              onChangeText={last_name => this.setState({ last_name })}
+            />
+          </Item>
+          <Item>
+            <Icon active type="Entypo" name="email" />
+            <Input
+              placeholder="Email Adress"
+              autoCapitalize="none"
+              onChangeText={email => this.setState({ email })}
+            />
+          </Item>
           <Button
             full
+            danger
             onPress={() =>
-              authStore.loginUser(this.state, this.props.navigation)
+              authStore.registerUser(this.state, this.props.navigation)
             }
           >
-            <Text>Login</Text>
+            <Text>SignUp</Text>
           </Button>
         </Card>
       </Container>
     );
   }
 }
-// export default observer(Login);
 export default withNavigation(observer(Login));

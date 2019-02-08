@@ -4,12 +4,11 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "stretch",
-    backgroundColor: "rgba(221, 60, 64, 0.06)"
+    alignItems: "stretch"
   },
   image: {
-    width: 200,
-    height: 200,
+    width: 150,
+    height: 150,
     alignSelf: "center",
     justifyContent: "center",
     alignItems: "center"

@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 
-import { Content, Text, List, Button } from "native-base";
+import { Content, Text, List, Button, Thumbnail } from "native-base";
 import { observer } from "mobx-react";
 import axios from "axios";
+
+import { Image, Dimensions } from "react-native";
+
+// import { FluidNavigator, Transition } from "react-navigation-fluid-transitions";
 
 import { Calendar, CalendarList } from "react-native-calendars";
 import DayList from "../DayList";
@@ -55,6 +59,14 @@ class CompanyDetail extends Component {
 
       return (
         <Content>
+          {/* <Transition shared={this.state.company.id} appear="scale"> */}
+          <Image
+            source={{ uri: this.state.company.logo }}
+            style={{ width: Dimensions.get("window").width, height: 400 }}
+          />
+          {/* </Transition> */}
+          <Text>{this.state.company.desc}</Text>
+
           <DayList company={company} />
           <List>{slotList}</List>
         </Content>

@@ -20,7 +20,11 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-native-calendars": "^1.22.0",
     "react-native-elements": "^1.0.0",
-    "react-navigation": "^3.0.9"
+    "react-native-motion": "^1.0.0",
+    "react-native-paper": "^2.10.1",
+    "react-navigation": "^3.0.9",
+    "react-navigation-fluid-transitions": "^0.3.0",
+    "react-navigation-material-bottom-tabs": "^1.0.0"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"

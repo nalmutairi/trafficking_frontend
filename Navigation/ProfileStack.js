@@ -5,16 +5,17 @@ import React from "react";
 
 import LoginScreen from "../Components/Login";
 import { Icon } from "native-base";
+
 const ProfileStack = createStackNavigator(
   {
     Profile: ProfileScreen,
     Login: LoginScreen
   },
   {
-    initialRouteName: "Login"
-    // defaultNavigationOptions: {
-    //   title: "welcome to the inn"
-    // }
+    initialRouteName: "Login",
+    navigationOptions: {
+      tabBarColor: "#DD3C40"
+    }
   }
 );
 
