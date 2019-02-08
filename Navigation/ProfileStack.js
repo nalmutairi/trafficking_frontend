@@ -5,6 +5,7 @@ import React from "react";
 
 import LoginScreen from "../Components/Login";
 import { Icon } from "native-base";
+
 const ProfileStack = createStackNavigator(
   {
     Profile: ProfileScreen,

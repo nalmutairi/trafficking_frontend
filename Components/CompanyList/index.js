@@ -3,6 +3,8 @@ import React, { Component } from "React";
 import { observer } from "mobx-react";
 import { List, Text } from "native-base";
 
+import { ScrollView, View } from "react-native";
+
 import CompanyItem from "./CompanyItem";
 
 import CompanyStore from "../../stores/companyStore";
@@ -30,7 +32,11 @@ class CompanyList extends Component {
       }
     }
 
-    return <List>{CompanyList}</List>;
+    return (
+      <ScrollView>
+        <List>{CompanyList}</List>
+      </ScrollView>
+    );
   }
 }
 
