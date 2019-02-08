@@ -51,7 +51,7 @@ class AuthStore {
       .then(res => res.data)
       .then(user => this.setCurrentUser(user.token))
       .then(() => {
-        navigation.replace("Account");
+        navigation.replace("Profile");
       })
       // .then(() => {
       //   navigation.replace("CoffeeList");
@@ -61,7 +61,7 @@ class AuthStore {
 
   logoutUser(navigation) {
     this.setCurrentUser();
-    () => navigation.replace("Account");
+    () => navigation.replace("Profile");
   }
 
   checkForToken = () => {
