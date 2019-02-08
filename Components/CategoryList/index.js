@@ -18,7 +18,7 @@ class CategoryList extends Component {
       )
     );
     return (
-      <ScrollView style={{ backgroundColor: "rgba(105, 146, 249, 0.01)" }}>
+      <ScrollView>
         <View style={styles.container}>{categoryCards}</View>
       </ScrollView>
     );
