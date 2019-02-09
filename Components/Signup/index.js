@@ -1,5 +1,3 @@
-// merge me
-
 import React, { Component } from "react";
 import { observer } from "mobx-react";
 import { withNavigation } from "react-navigation";
@@ -15,9 +13,6 @@ import authStore from "../../stores/authStore";
 import styles from "./styles";
 
 class Login extends Component {
-  static navigationOptions = {
-    title: "Login"
-  };
   constructor(props) {
     super(props);
     this.state = {

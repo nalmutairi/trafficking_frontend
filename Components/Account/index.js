@@ -1,4 +1,3 @@
-// merge me
 import React, { Component } from "react";
 import { Container, Tab, Tabs } from "native-base";
 import { observer } from "mobx-react";
