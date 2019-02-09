@@ -14,18 +14,16 @@ class Account extends Component {
   render() {
     if (authStore.user === null) {
       return (
-        <Overlay isVisible={true} borderRadius={15}>
-          <Container>
-            <Tabs>
-              <Tab heading="Login">
-                <Login />
-              </Tab>
-              <Tab heading="Signup">
-                <Signup />
-              </Tab>
-            </Tabs>
-          </Container>
-        </Overlay>
+        <Container>
+          <Tabs>
+            <Tab heading="Login">
+              <Login />
+            </Tab>
+            <Tab heading="Signup">
+              <Signup />
+            </Tab>
+          </Tabs>
+        </Container>
       );
     } else {
       if (addressStore.loading) {
