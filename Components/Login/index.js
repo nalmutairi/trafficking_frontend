@@ -1,22 +1,11 @@
-// merge me
 import React, { Component } from "react";
 import { observer } from "mobx-react";
 import { withNavigation } from "react-navigation";
 
 // NativeBase Components
-import {
-  Item,
-  Input,
-  Button,
-  Text,
-  Container,
-  Icon,
-  Content,
-  View
-} from "native-base";
+import { Item, Input, Button, Text, Container, Icon } from "native-base";
 import { Card, Image } from "react-native-elements";
 
-import { ScrollView } from "react-native";
 // Store
 import authStore from "../../stores/authStore";
 
@@ -34,55 +23,42 @@ class Login extends Component {
 
   render() {
     return (
-      <ScrollView>
-        <Container style={styles.container}>
-          <Card>
-            <Image
-              style={styles.image}
-              source={{
-                uri: "http://104.248.38.127/media/iCleanU_28SUxkO.jpg"
-              }}
+      <Container style={styles.container}>
+        <Card>
+          <Image
+            style={styles.image}
+            source={{
+              uri: "http://104.248.38.127/media/iCleanU_28SUxkO.jpg"
+            }}
+          />
+          <Item>
+            <Icon active type="Entypo" name="user" />
+            <Input
+              placeholder="Username"
+              autoCapitalize="none"
+              onChangeText={username => this.setState({ username })}
             />
-            <Item>
-              <Icon active type="Entypo" name="user" />
-              <Input
-                placeholder="Username"
-                autoCapitalize="none"
-                onChangeText={username => this.setState({ username })}
-              />
-            </Item>
-            <Item>
-              <Icon active type="Entypo" name="key" />
-              <Input
-                placeholder="Password"
-                autoCapitalize="none"
-                secureTextEntry={true}
-                onChangeText={password => this.setState({ password })}
-              />
-            </Item>
-            <Button
-              full
-              onPress={() =>
-                authStore.loginUser(this.state, this.props.navigation)
-              }
-            >
-              <Text>Login</Text>
-            </Button>
-            <Button
-              full
-              danger
-              onPress={() =>
-                authStore.registerUser(this.state, this.props.navigation)
-              }
-            >
-              <Text>SignUp</Text>
-            </Button>
-          </Card>
-        </Container>
-      </ScrollView>
-      
+          </Item>
+          <Item>
+            <Icon active type="Entypo" name="key" />
+            <Input
+              placeholder="Password"
+              autoCapitalize="none"
+              secureTextEntry={true}
+              onChangeText={password => this.setState({ password })}
+            />
+          </Item>
+          <Button
+            full
+            onPress={() =>
+              authStore.loginUser(this.state, this.props.navigation)
+            }
+          >
+            <Text>Login</Text>
+          </Button>
+        </Card>
+      </Container>
     );
   }
 }
-// export default observer(Login);
 export default withNavigation(observer(Login));

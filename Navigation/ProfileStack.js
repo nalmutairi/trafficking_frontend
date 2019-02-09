@@ -5,12 +5,14 @@ import React from "react";
 
 import LoginScreen from "../Components/Login";
 import { Icon } from "native-base";
-
+import Account from "../Components/Account";
 import CompanyList from "../Components/CompanyList";
+import AddressForm from "../Components/AddressForm";
 const ProfileStack = createStackNavigator(
   {
     Profile: ProfileScreen,
-    Login: LoginScreen
+    AddressForm: AddressForm,
+    Login: Account
   },
   {
     initialRouteName: "Login",
