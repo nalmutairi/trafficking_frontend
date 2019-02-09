@@ -1,3 +1,4 @@
+// merge me
 import React, { Component } from "react";
 import { Container, Header, Content, Spinner } from "native-base";
 class Loading extends Component {
