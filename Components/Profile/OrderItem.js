@@ -15,17 +15,14 @@ class OrderItem extends Component {
     return (
       <Card>
         <CardItem header button>
-          <Text>{order.date}</Text>
+          <Text>{order.companyname}</Text>
         </CardItem>
         <CardItem button>
           <Body>
             <Text>
-              {order.start_time} - {order.end_time}
+              Time: {order.start_time} - {order.end_time}
             </Text>
           </Body>
-        </CardItem>
-        <CardItem footer button>
-          <Text>GeekyAnts</Text>
         </CardItem>
       </Card>
     );

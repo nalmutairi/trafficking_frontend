@@ -2,7 +2,8 @@ import axios from "axios";
 import { decorate, observable, action, computed } from "mobx";
 
 const instance = axios.create({
-  baseURL: "http:104.248.38.127/"
+  // baseURL: "http:104.248.38.127/"
+  baseURL: "http:127.0.0.1:8000/"
 });
 
 import AuthStore from "./authStore";
@@ -54,7 +55,7 @@ class AppointmentStore {
     }
   }
 
-  addAppointment(app) {
+  addAppointment(app, companyname) {
     const doesExist = this.appointments.find(
       appointment =>
         appointment.date === app.date &&
@@ -62,6 +63,7 @@ class AppointmentStore {
     );
 
     if (!doesExist) {
+      app.company = companyname;
       this.appointments.push(app);
       return true;
     } else {
@@ -78,8 +80,8 @@ class AppointmentStore {
   checkout(navigation) {
     console.log("CHECKOUT FETCH", this.reservedSlots);
     this.appointments.forEach(appointment => {
-      axios
-        .put("http://104.248.38.127/slot/" + appointment.id + "/update/", {
+      instance
+        .put("slot/" + appointment.id + "/update/", {
           user: AuthStore.user.user_id
         })
         .then(() => {

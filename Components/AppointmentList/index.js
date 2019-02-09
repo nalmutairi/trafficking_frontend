@@ -9,6 +9,7 @@ import AppointmentStore from "../../stores/appointmentStore";
 import AuthStore from "../../stores/authStore";
 
 import AppointmentItem from "./AppointmentItem";
+
 import Checkout from "../Checkout";
 
 class AppointmentList extends Component {
@@ -74,6 +75,7 @@ class AppointmentList extends Component {
   //     return <Content />;
   //   }
   // }
+
   render() {
     return (
       <Content>

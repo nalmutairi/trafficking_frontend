@@ -6,7 +6,7 @@ import AppointmentStore from "../../stores/appointmentStore";
 
 class SlotItem extends Component {
   handlePress(slot) {
-    AppointmentStore.addAppointment(slot);
+    AppointmentStore.addAppointment(slot, this.props.company);
     console.log("Appointments STORE:   ", AppointmentStore.appointments);
   }
 
