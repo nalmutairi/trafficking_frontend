@@ -13,6 +13,11 @@ import DayList from "../DayList";
 import SlotList from "../SlotList";
 import CompanyStore from "../../stores/companyStore";
 
+const instance = axios.create({
+  baseURL: "http://104.248.38.127/"
+  // baseURL: "http:127.0.0.1:8000/"
+});
+
 class CompanyDetail extends Component {
   constructor(props) {
     super(props);
@@ -26,8 +31,8 @@ class CompanyDetail extends Component {
   }
 
   fetchACompany() {
-    axios
-      .get("http://104.248.38.127/company/detail/" + this.state.companyid)
+    instance
+      .get("company/detail/" + this.state.companyid)
       .then(res => res.data)
       .then(company => this.setState({ company: company, loading: false }))
       .catch(err => console.error(err));

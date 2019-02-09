@@ -3,6 +3,7 @@ import axios from "axios";
 
 const instance = axios.create({
   baseURL: "http://104.248.38.127/"
+  // baseURL: "http://127.0.0.1:8000/"
 });
 
 class AddressStore {
@@ -13,7 +14,7 @@ class AddressStore {
 
   fetchAddresses() {
     instance
-      .get("/address/list/")
+      .get("address/list/")
       .then(res => res.data)
       .then(addresses => (this.addresses = addresses))
       .then(() => (this.loading = false))
@@ -22,10 +23,10 @@ class AddressStore {
 
   createAddress(userInput, navigation) {
     instance
-      .post("/address/create/", userInput)
+      .post("address/create/", userInput)
       .then(res => res.data)
       .then(() => alert("address created"))
-      .then(navigation.replace("CategoryList"))
+      .then(navigation.navigate("CategoryList"))
       .catch(err => console.error(err));
   }
 

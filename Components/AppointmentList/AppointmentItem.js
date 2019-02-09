@@ -14,6 +14,7 @@ import {
 //
 import AppointmentStore from "../../stores/appointmentStore";
 import styles from "./style";
+import AddressPicker from "./AddressPicker";
 class AppointmentItem extends Component {
   render() {
     const { appointment } = this.props;
@@ -24,7 +25,7 @@ class AppointmentItem extends Component {
       <Content padder>
         <Card>
           <CardItem header bordered>
-            <Text>{dateFormatted.toString().substring(0, 15)}</Text>
+            <Text>{appointment.company}</Text>
           </CardItem>
           <CardItem bordered>
             <Body>
@@ -33,6 +34,9 @@ class AppointmentItem extends Component {
                 Time: {appointment.start_time} - {appointment.end_time}
               </Text>
             </Body>
+          </CardItem>
+          <CardItem>
+            <AddressPicker />
           </CardItem>
           <CardItem footer bordered>
             <Button

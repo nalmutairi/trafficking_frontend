@@ -1,6 +1,11 @@
 import axios from "axios";
 import { decorate, observable } from "mobx";
 
+const instance = axios.create({
+  baseURL: "http://104.248.38.127/"
+  // baseURL: "http:127.0.0.1:8000/"
+});
+
 class CategoryStore {
   constructor() {
     this.categories = [];
@@ -10,8 +15,8 @@ class CategoryStore {
   }
 
   fetchAllCategories() {
-    axios
-      .get("http://104.248.38.127/category/list/")
+    instance
+      .get("category/list/")
       .then(res => res.data)
       .then(categories => {
         this.categories = categories;
