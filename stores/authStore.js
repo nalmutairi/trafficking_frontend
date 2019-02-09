@@ -53,10 +53,8 @@ class AuthStore {
       .then(() => {
         navigation.replace("Profile");
       })
-      // .then(() => {
-      //   navigation.replace("CoffeeList");
-      // })
-      .catch(err => console.error(err));
+      .catch(err => alert("invaild username or password"));
+    // .catch(err => console.error(err));
   }
 
   logoutUser(navigation) {
