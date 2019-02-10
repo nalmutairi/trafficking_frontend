@@ -28,7 +28,7 @@ class Login extends Component {
           <Image
             style={styles.image}
             source={{
-              uri: "http://104.248.38.127/media/iCleanU_28SUxkO.jpg"
+              uri: "http://127.0.0.1:8000/media/iCleanU.jpg"
             }}
           />
           <Item>

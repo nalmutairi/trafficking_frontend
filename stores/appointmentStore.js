@@ -2,8 +2,8 @@ import axios from "axios";
 import { decorate, observable, action, computed } from "mobx";
 
 const instance = axios.create({
-  baseURL: "http:104.248.38.127/"
-  // baseURL: "http:127.0.0.1:8000/"
+  // baseURL: "http:104.248.38.127/"
+  baseURL: "http:127.0.0.1:8000/"
 });
 
 import AuthStore from "./authStore";
