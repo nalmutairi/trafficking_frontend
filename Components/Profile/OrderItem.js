@@ -16,6 +16,7 @@ class OrderItem extends Component {
       <Card>
         <CardItem header>
           <Text>{order.companyname}</Text>
+
         </CardItem>
         <CardItem>
           <Body>

@@ -1,17 +1,31 @@
 import React, { Component } from "react";
 
-import { Content, Text, List, Button, Thumbnail } from "native-base";
+import {
+  Content,
+  Text,
+  List,
+  Button,
+  Thumbnail,
+  Left,
+  Body,
+  Right,
+  ListItem,
+  Header,
+  Title
+} from "native-base";
 import { observer } from "mobx-react";
 import axios from "axios";
 
 import { Image, Dimensions } from "react-native";
 
-// import { FluidNavigator, Transition } from "react-navigation-fluid-transitions";
+import { FluidNavigator, Transition } from "react-navigation-fluid-transitions";
 
 import { Calendar, CalendarList } from "react-native-calendars";
 import DayList from "../DayList";
 import SlotList from "../SlotList";
 import CompanyStore from "../../stores/companyStore";
+
+import styles from "./styles";
 
 const instance = axios.create({
   // baseURL: "http://104.248.38.127/"
@@ -59,13 +73,28 @@ class CompanyDetail extends Component {
 
       return (
         <Content>
-          {/* <Transition shared={this.state.company.id} appear="scale"> */}
-          <Image
-            source={{ uri: this.state.company.logo }}
-            style={{ width: Dimensions.get("window").width, height: 400 }}
-          />
-          {/* </Transition> */}
-          <Text>{this.state.company.desc}</Text>
+          <Header>
+            <Left>
+              <Button
+                icon="back"
+                onPress={() => this.props.navigation.goBack()}
+              />
+            </Left>
+            <Body>
+              <Title>{this.state.company.name}</Title>
+            </Body>
+            <Right />
+          </Header>
+
+          <Transition shared={this.state.company.id}>
+            <Image
+              source={{ uri: this.state.company.logo }}
+              style={styles.myImage}
+            />
+          </Transition>
+          <ListItem>
+            <Text style={styles.description}>{this.state.company.desc}</Text>
+          </ListItem>
 
           <DayList company={company} />
           <List>{slotList}</List>

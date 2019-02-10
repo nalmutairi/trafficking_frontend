@@ -10,7 +10,7 @@ const CartStack = createStackNavigator(
   {
     initialRouteName: "AppointmentList",
     navigationOptions: {
-      tabBarColor: "#6992F9"
+      tabBarColor: "#697689"
     }
   }
 );

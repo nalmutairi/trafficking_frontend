@@ -1,7 +1,18 @@
 import React, { Component } from "React";
 
 import { observer } from "mobx-react";
-import { List, Text } from "native-base";
+import {
+  List,
+  Text,
+  Button,
+  Content,
+  Header,
+  Title,
+  Left,
+  Icon,
+  Body,
+  Right
+} from "native-base";
 
 import { ScrollView, View } from "react-native";
 
@@ -10,6 +21,15 @@ import CompanyItem from "./CompanyItem";
 import CompanyStore from "../../stores/companyStore";
 
 class CompanyList extends Component {
+  static navigationOptions = ({ navigation }) => ({
+    title: navigation.getParam("company", {}).name,
+    headerLeft: (
+      <Button onPress={() => navigation.goBack()}>
+        <Text>CART</Text>
+      </Button>
+    )
+  });
+
   render() {
     const companies = CompanyStore.companies;
     let filtered = this.props.navigation.getParam("category");
@@ -33,9 +53,20 @@ class CompanyList extends Component {
     }
 
     return (
-      <ScrollView style={{ backgroundColor: "rgba(7, 183, 10, 0.03)" }}>
-        <List>{CompanyList}</List>
-      </ScrollView>
+      <Content>
+        <Header>
+          <Left>
+            <Button transparent />
+          </Left>
+          <Body>
+            <Title>List</Title>
+          </Body>
+          <Right />
+        </Header>
+        <ScrollView style={{ backgroundColor: "rgba(7, 183, 10, 0.03)" }}>
+          <List>{CompanyList}</List>
+        </ScrollView>
+      </Content>
     );
   }
 }

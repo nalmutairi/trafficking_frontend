@@ -27,6 +27,7 @@ class AddressStore {
       .post("address/create/", userInput)
       .then(res => res.data)
       .then(navigation.navigate("Profile"))
+
       .catch(err => console.error(err));
   }
 

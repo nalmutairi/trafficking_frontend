@@ -4,8 +4,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "space-around",
-    backgroundColor: "#ecf0f1"
+    justifyContent: "center",
+    alignSelf: "auto"
   },
   largeLogo: {
     width: 200,
@@ -23,5 +23,23 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     color: "#34495e"
+  },
+  myImage: {
+    width: Dimensions.get("window").width * 0.95,
+    height: 400,
+    borderRadius: 20,
+    margin: 10
+  },
+  description: {
+    fontSize: 30,
+    fontWeight: "bold",
+    fontStyle: "italic",
+    padding: 20,
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "auto"
   }
 });
+
+export default styles;

@@ -1,15 +1,12 @@
 import { createStackNavigator } from "react-navigation";
 
-// import {
-//   createFluidNavigator,
-//   Transition
-// } from "react-navigation-fluid-transitions";
+import { FluidNavigator, Transition } from "react-navigation-fluid-transitions";
 
 import CompanyList from "../Components/CompanyList";
 import CompanyDetail from "../Components/CompanyDetail";
 
-const CompanyStack = createStackNavigator(
-  // const CompanyStack = createFluidNavigator(
+// const CompanyStack = createStackNavigator(
+const CompanyStack = FluidNavigator(
   {
     CompanyList: CompanyList,
     CompanyDetail: CompanyDetail

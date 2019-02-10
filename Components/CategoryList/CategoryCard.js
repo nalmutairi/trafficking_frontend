@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import styles from "./styles";
 
-import { TouchableOpacity } from "react-native";
+import {
+  TouchableOpacity,
+  Image,
+  StyleSheet,
+  View,
+  ImageBackground
+} from "react-native";
 import { Text, Thumbnail } from "native-base";
 
 import { withNavigation } from "react-navigation";
@@ -26,13 +32,27 @@ class CategoryCard extends Component {
           this.handlePress(category);
         }}
       >
-        <Thumbnail
+        <ImageBackground
           source={{
-            uri:
-              "http://icons.iconarchive.com/icons/atyourservice/service-categories/256/Cleaning-icon.png"
+            uri: "https://www.fg-a.com/wallpapers/white-marble-2-2018.jpg"
           }}
-        />
-        <Text style={styles.itemTitle}>{category.name}</Text>
+          imageStyle={{ borderRadius: 30 }}
+          style={[
+            {
+              width: "100%",
+              height: "100%"
+            },
+            styles.item
+          ]}
+        >
+          <Thumbnail
+            square
+            source={{
+              uri: category.pic
+            }}
+          />
+          <Text style={styles.itemTitle}>{category.name}</Text>
+        </ImageBackground>
       </TouchableOpacity>
     );
   }

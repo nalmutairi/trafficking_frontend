@@ -19,6 +19,17 @@ const styles = StyleSheet.create({
   loginButton: {
     backgroundColor: "blue",
     color: "white"
+  },
+
+  button: {
+    width: 90,
+    height: 90,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 50,
+    shadowColor: "black",
+    shadowOffset: { height: 2 },
+    shadowOpacity: 0.3
   }
 });
 
