@@ -6,7 +6,9 @@ import AppointmentStore from "../../stores/appointmentStore";
 
 class SlotItem extends Component {
   handlePress(slot) {
+    let address;
     AppointmentStore.addAppointment(slot, this.props.company);
+    AppointmentStore.reserveAppointment(slot.id, address);
     console.log("Appointments STORE:   ", AppointmentStore.appointments);
   }
 
@@ -23,7 +25,7 @@ class SlotItem extends Component {
   }
 
   assignedSlot(slot) {
-    if (slot.user || this.checkSlot(slot)) {
+    if (slot.status !== "O" || this.checkSlot(slot)) {
       return true;
     } else {
       return false;
