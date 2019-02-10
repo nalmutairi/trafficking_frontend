@@ -26,10 +26,12 @@ class AddressForm extends Component {
       jaada: "",
       house: "",
       phone: "",
-      haveAddress: false
+      haveAddress: false,
+
+      address: this.props.navigation.getParam("address", {})
     };
 
-    this.setDefaultAddress();
+    this.setSelectedAddress();
   }
   setDefaultAddress() {
     let address;
@@ -46,140 +48,139 @@ class AddressForm extends Component {
       this.state.haveAddress = true;
     }
   }
+
+  setSelectedAddress() {
+    this.state.area = this.state.address.area;
+    this.state.block = this.state.address.block;
+    this.state.street = this.state.address.street;
+    this.state.jaada = this.state.address.jaada;
+    this.state.house = this.state.address.house;
+    if (this.state.address.area) {
+      this.state.haveAddress = true;
+    }
+  }
+
   render() {
     return (
-      <Overlay isVisible={true} borderRadius={15}>
-        <Container>
-          <Content>
-            <Form>
-              <Item stackedLabel>
-                <Label>Area</Label>
-                {this.state.haveAddress ? (
-                  <Input
-                    placeholder={this.state.area}
-                    autoCapitalize="none"
-                    onChangeText={area => this.setState({ area })}
-                  />
-                ) : (
-                  <Input
-                    autoCapitalize="none"
-                    onChangeText={area => this.setState({ area })}
-                  />
-                )}
-              </Item>
-              <Item stackedLabel>
-                <Label>Block</Label>
-                {this.state.haveAddress ? (
-                  <Input
-                    placeholder={this.state.block}
-                    autoCapitalize="none"
-                    onChangeText={block => this.setState({ block })}
-                  />
-                ) : (
-                  <Input
-                    autoCapitalize="none"
-                    onChangeText={block => this.setState({ block })}
-                  />
-                )}
-              </Item>
-              <Item stackedLabel>
-                <Label>Street</Label>
-                {this.state.haveAddress ? (
-                  <Input
-                    placeholder={this.state.street}
-                    autoCapitalize="none"
-                    onChangeText={street => this.setState({ street })}
-                  />
-                ) : (
-                  <Input
-                    autoCapitalize="none"
-                    onChangeText={street => this.setState({ street })}
-                  />
-                )}
-              </Item>
-              <Item stackedLabel>
-                <Label>Jaada</Label>
-                {this.state.haveAddress ? (
-                  <Input
-                    placeholder={this.state.jaada}
-                    autoCapitalize="none"
-                    onChangeText={jaada => this.setState({ jaada })}
-                  />
-                ) : (
-                  <Input
-                    autoCapitalize="none"
-                    onChangeText={jaada => this.setState({ jaada })}
-                  />
-                )}
-              </Item>
-              <Item stackedLabel>
-                <Label>House</Label>
-                {this.state.haveAddress ? (
-                  <Input
-                    placeholder={this.state.house}
-                    autoCapitalize="none"
-                    onChangeText={house => this.setState({ house })}
-                  />
-                ) : (
-                  <Input
-                    autoCapitalize="none"
-                    onChangeText={house => this.setState({ house })}
-                  />
-                )}
-              </Item>
-              <Item stackedLabel>
-                <Label>Phone</Label>
-                {this.state.haveAddress ? (
-                  <Input
-                    placeholder={this.state.phone}
-                    autoCapitalize="none"
-                    onChangeText={phone => this.setState({ phone })}
-                  />
-                ) : (
-                  <Input
-                    autoCapitalize="none"
-                    onChangeText={phone => this.setState({ phone })}
-                  />
-                )}
-              </Item>
+      <Container>
+        <Content>
+          <Form>
+            <Item stackedLabel>
+              <Label>Area</Label>
               {this.state.haveAddress ? (
-                <Button
-                  full
-                  onPress={() =>
-                    addressStore.updateAddress(
-                      this.state,
-                      addressStore.addresses[0].id,
-                      this.props.navigation
-                    )
-                  }
-                >
-                  <Text>Update Address</Text>
-                </Button>
+                <Input
+                  placeholder={this.state.area}
+                  autoCapitalize="none"
+                  onChangeText={area => this.setState({ area })}
+                />
               ) : (
-                <Button
-                  full
-                  onPress={() =>
-                    addressStore.createAddress(
-                      this.state,
-                      this.props.navigation
-                    )
-                  }
-                >
-                  <Text>Create Address</Text>
-                </Button>
+                <Input
+                  autoCapitalize="none"
+                  onChangeText={area => this.setState({ area })}
+                />
               )}
-
+            </Item>
+            <Item stackedLabel>
+              <Label>Block</Label>
+              {this.state.haveAddress ? (
+                <Input
+                  placeholder={this.state.block}
+                  autoCapitalize="none"
+                  onChangeText={block => this.setState({ block })}
+                />
+              ) : (
+                <Input
+                  autoCapitalize="none"
+                  onChangeText={block => this.setState({ block })}
+                />
+              )}
+            </Item>
+            <Item stackedLabel>
+              <Label>Street</Label>
+              {this.state.haveAddress ? (
+                <Input
+                  placeholder={this.state.street}
+                  autoCapitalize="none"
+                  onChangeText={street => this.setState({ street })}
+                />
+              ) : (
+                <Input
+                  autoCapitalize="none"
+                  onChangeText={street => this.setState({ street })}
+                />
+              )}
+            </Item>
+            <Item stackedLabel>
+              <Label>Jaada</Label>
+              {this.state.haveAddress ? (
+                <Input
+                  placeholder={this.state.jaada}
+                  autoCapitalize="none"
+                  onChangeText={jaada => this.setState({ jaada })}
+                />
+              ) : (
+                <Input
+                  autoCapitalize="none"
+                  onChangeText={jaada => this.setState({ jaada })}
+                />
+              )}
+            </Item>
+            <Item stackedLabel>
+              <Label>House</Label>
+              {this.state.haveAddress ? (
+                <Input
+                  placeholder={this.state.house}
+                  autoCapitalize="none"
+                  onChangeText={house => this.setState({ house })}
+                />
+              ) : (
+                <Input
+                  autoCapitalize="none"
+                  onChangeText={house => this.setState({ house })}
+                />
+              )}
+            </Item>
+            <Item stackedLabel>
+              <Label>Phone</Label>
+              {this.state.haveAddress ? (
+                <Input
+                  placeholder={this.state.phone}
+                  autoCapitalize="none"
+                  onChangeText={phone => this.setState({ phone })}
+                />
+              ) : (
+                <Input
+                  autoCapitalize="none"
+                  onChangeText={phone => this.setState({ phone })}
+                />
+              )}
+            </Item>
+            {this.state.haveAddress ? (
               <Button
                 full
-                danger
-                onPress={() => authStore.logoutUser(this.props.navigation)}
+                onPress={() =>
+                  addressStore.updateAddress(
+                    this.state,
+                    addressStore.addresses[0].id,
+                    this.props.navigation
+                  )
+                }
               >
-                <Text>LOG OUT</Text>
+                <Text>Update Address</Text>
               </Button>
-            </Form>
-          </Content>
-        </Container>
-      </Overlay>
+            ) : (
+              <Button
+                full
+                onPress={() =>
+                  addressStore.createAddress(this.state, this.props.navigation)
+                }
+              >
+                <Text>Create Address</Text>
+              </Button>
+            )}
+          </Form>
+        </Content>
+      </Container>
     );
   }
 }

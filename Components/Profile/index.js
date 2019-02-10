@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { withNavigation } from "react-navigation";
 import { ScrollView, View, TouchableOpacity } from "react-native";
 import { observer } from "mobx-react";
 // NativeBase Components
@@ -13,18 +13,20 @@ import {
   Text,
   Label,
   List,
-  Accordion
+  Accordion,
+  Left,
+  Thumbnail
 } from "native-base";
 
 import { CollapsibleList } from "react-native-collapsible-list";
-import authStore from "../../stores/authStore";
-import addressStore from "../../stores/addressStore";
+import AuthStore from "../../stores/authStore";
+import AddressStore from "../../stores/addressStore";
 import AppointmentStore from "../../stores/appointmentStore";
 
 import OrderItem from "./OrderItem";
 import SlotItem from "../SlotList/SlotItem";
 import SlotList from "../SlotList";
-
+import AddressList from "./AddressList";
 import OrderList from "./orderList";
 // const dataArray = [
 //   {
@@ -43,19 +45,20 @@ class Profile extends Component {
     this.state = {
       pending: false,
       past: false,
+      address: false,
       phone: "",
       area: "",
       block: "",
       street: "",
       house: "",
       jaada: "",
-      user: authStore.user
+      user: AuthStore.user
     };
+    AddressStore.fetchAddresses();
   }
 
   componentDidMount() {
     AppointmentStore.fetchUserAppointments();
-    console.log("UPDATING CONSOLE");
   }
 
   pressPending() {
@@ -64,6 +67,10 @@ class Profile extends Component {
 
   pressPast() {
     this.setState({ past: !this.state.past });
+  }
+
+  pressAddress() {
+    this.setState({ address: !this.state.address });
   }
 
   pendingslotsAvailable() {
@@ -77,8 +84,12 @@ class Profile extends Component {
           <OrderItem order={slot} key={slot.id} />
         ));
       }
-      console.log("PEEEE: ", PendingSlotList);
-      return PendingSlotList;
+
+      if (PendingSlotList.length > 0) {
+        return PendingSlotList;
+      } else {
+        return <Text>No Pending Orders</Text>;
+      }
     }
   }
 
@@ -91,81 +102,79 @@ class Profile extends Component {
           <OrderItem order={slot} key={slot.id} />
         ));
       }
-      console.log("PAAAA: ", PastSlotList);
-      return PastSlotList;
+      if (PastSlotList.length > 0) {
+        return PastSlotList;
+      } else {
+        return <Text>No Past Orders</Text>;
+      }
+    }
+  }
+
+  address() {
+    if (this.state.address) {
+      if (AddressStore.addresses) {
+        console.log("WE HAVE", AddressStore.addresses);
+        return (
+          <Content>
+            <Button
+              block
+              info
+              onPress={() => this.props.navigation.navigate("AddressForm", {})}
+            >
+              <Text>Add Another Address</Text>
+            </Button>
+            <AddressList address={AddressStore.addresses} />
+          </Content>
+        );
+      } else {
+        return (
+          <Button
+            block
+            info
+            onPress={() => this.props.navigation.navigate("AddressForm", {})}
+          >
+            <Text>Add another Address</Text>
+          </Button>
+        );
+      }
     }
   }
   render() {
+    console.log("USER", AuthStore.user);
     return (
       <ScrollView>
+        <Content />
+        <Button
+          full
+          danger
+          onPress={() => AuthStore.logoutUser(this.props.navigation)}
+        >
+          <Text>LOG OUT</Text>
+        </Button>
+        <Left>
+          <Thumbnail
+            source={{
+              uri:
+                "https://recap-project.eu/wp-content/uploads/2017/02/default-user-500x500.jpg"
+            }}
+            style={{ height: 200, width: 200, flex: 1 }}
+          />
+        </Left>
+        <Text style={{ textAlign: "center", fontSize: 30 }}>
+          Welcome {AuthStore.user.username}
+        </Text>
+        <Button block light onPress={() => this.pressAddress()}>
+          <Text>My Addressess</Text>
+        </Button>
+        {this.address()}
         <Content>
-          <Form>
-            <Item stackedLabel>
-              <Label>Area</Label>
-              <Input
-                placeholder="area"
-                autoCapitalize="none"
-                onChangeText={area => this.setState({ area })}
-              />
-            </Item>
-            <Item stackedLabel>
-              <Label>Block</Label>
-              <Input
-                placeholder="block"
-                autoCapitalize="none"
-                onChangeText={block => this.setState({ block })}
-              />
-            </Item>
-            <Item stackedLabel>
-              <Label>Street</Label>
-              <Input
-                placeholder="street"
-                autoCapitalize="none"
-                onChangeText={street => this.setState({ street })}
-              />
-            </Item>
-            <Item stackedLabel>
-              <Label>Jaada</Label>
-              <Input
-                placeholder="jaada"
-                autoCapitalize="none"
-                onChangeText={jaada => this.setState({ jaada })}
-              />
-            </Item>
-            <Item stackedLabel>
-              <Label>House</Label>
-              <Input
-                placeholder="house"
-                autoCapitalize="none"
-                onChangeText={house => this.setState({ house })}
-              />
-            </Item>
-            <Item stackedLabel>
-              <Label>Phone</Label>
-              <Input
-                placeholder="phone"
-                autoCapitalize="none"
-                onChangeText={phone => this.setState({ phone })}
-              />
-            </Item>
-            <Button
-              full
-              onPress={
-                // () => console.log(this.state)
-                () => addressStore.createAddress(this.state)
-                // authStore.loginUser(this.state, this.props.navigation)
-              }
-            >
-              <Text>Create Address</Text>
-            </Button>
-          </Form>
-          <TouchableOpacity onPress={() => this.pressPending()}>
+          <Button block light onPress={() => this.pressPending()}>
             <Text>Pending Slots</Text>
-          </TouchableOpacity>
+          </Button>
           {this.pendingslotsAvailable()}
-          <TouchableOpacity onPress={() => this.pressPast()}>
+          <Button block light onPress={() => this.pressPast()}>
             <Text>Past Slots</Text>
-          </TouchableOpacity>
+          </Button>
           {this.pastslotsAvailable()}
         </Content>
       </ScrollView>
@@ -183,4 +192,4 @@ class Profile extends Component {
     );
   }
 }
-export default observer(Profile);
+export default withNavigation(observer(Profile));

@@ -32,7 +32,7 @@ const BottomTab = createMaterialBottomTabNavigator(
         } else if (routeName === "Profile") {
           iconName = "person";
           iconType = "MaterialIcons";
-        } else if (routeName == "CartTab") {
+        } else if (routeName == "Cart") {
           iconName = "cart";
         }
         return (
