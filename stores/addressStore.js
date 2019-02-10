@@ -26,7 +26,7 @@ class AddressStore {
       .post("address/create/", userInput)
       .then(res => res.data)
       .then(() => alert("address created"))
-      .then(navigation.navigate("CategoryList"))
+      .then(navigation.navigate("Category"))
       .catch(err => console.error(err));
   }
 
@@ -36,7 +36,7 @@ class AddressStore {
       .put(`address/${addressID}/update/`, userInput)
       .then(res => res.data)
       .then(() => alert("UPDATED"))
-      .then(navigation.replace("CategoryList"))
+      .then(navigation.replace("Category"))
       .catch(err => console.error(err));
   }
 }
