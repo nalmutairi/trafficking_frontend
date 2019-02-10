@@ -2,20 +2,23 @@ import React, { Component } from "react";
 
 import { observer } from "mobx-react";
 import { withNavigation } from "react-navigation";
-
+import { View } from "react-native";
 import { Text, List, Button, Content, Image, Thumbnail } from "native-base";
 
 import AppointmentStore from "../../stores/appointmentStore";
 import AuthStore from "../../stores/authStore";
-
+import AddressStore from "../../stores/addressStore";
 import AppointmentItem from "./AppointmentItem";
 
 import Checkout from "../Checkout";
 
 class AppointmentList extends Component {
+  componentDidMount() {
+    AddressStore.fetchAddresses();
+  }
   isUser() {
     if (AuthStore.user && AppointmentStore.appointments.length > 0) {
-      return <Checkout navigation={this.props.navigation} />;
+      return <Content />;
     } else if (!AuthStore.user && AppointmentStore.appointments.length > 0) {
       return (
         <Button
@@ -28,16 +31,17 @@ class AppointmentList extends Component {
       );
     } else {
       return (
-        <Content>
-          <Text>YOU GOTTA ADD STUFF TO YOUR CART SON</Text>
-          <Thumbnail
-            source={{
-              uri:
-                "https://pngimage.net/wp-content/uploads/2018/05/empty-cart-png-6.png"
-            }}
-            style={{ height: 200, width: null, flex: 1 }}
-          />
-        </Content>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
+          <Text style={{ textAlignVertical: "center", alignSelf: "center" }}>
+            SON
+          </Text>
+        </View>
       );
     }
   }

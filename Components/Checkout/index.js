@@ -3,8 +3,20 @@ import { observer } from "mobx-react";
 import { withNavigation } from "react-navigation";
 import { Button, Text } from "native-base";
 import AppointmentStore from "../../stores/appointmentStore";
+import AddressStore from "../../stores/addressStore";
 
 class Checkout extends Component {
+  addressSelected() {
+    if (AddressStore.select) {
+      AppointmentStore.checkout(this.props.navigation, 1);
+    } else {
+      Toast.show({
+        text: "Appointment has been added to cart",
+        buttonText: "Okay"
+      });
+    }
+  }
+
   render() {
     return (
       <Button
@@ -12,7 +24,7 @@ class Checkout extends Component {
         info
         onPress={() => {
           AppointmentStore.fetchUserAppointments();
-          AppointmentStore.checkout(this.props.navigation);
+          this.addressSelected();
         }}
       >
         <Text>Checkout</Text>

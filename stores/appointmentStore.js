@@ -55,6 +55,21 @@ class AppointmentStore {
     }
   }
 
+  reserveAppointment(appointmentID, address) {
+    let user;
+    if (AuthStore.user) {
+      user = AuthStore.user.user_id;
+    } else {
+      user = 7;
+    }
+    instance
+      .put("slot/" + appointmentID + "/update/", {
+        user: user,
+        address: address,
+        status: "R"
+      })
+      .catch(err => console.log(err));
+  }
   addAppointment(app, companyname) {
     const doesExist = this.appointments.find(
       appointment =>
@@ -71,18 +86,45 @@ class AppointmentStore {
     }
   }
 
-  removeAppointment(app) {
+  removeApp(app) {
     this.appointments = this.appointments.filter(appointment => {
       return appointment.id !== app.id;
     });
   }
 
-  checkout(navigation) {
+  removeAppointment(app, appointmentID) {
+    this.appointments = this.appointments.filter(appointment => {
+      return appointment.id !== app.id;
+    });
+    instance
+      .put("slot/" + appointmentID + "/update/", {
+        user: 7,
+        address: 1,
+        status: "O"
+      })
+      .catch(err => console.log(err));
+  }
+
+  confirmAppointment(appointment, address) {
+    instance
+      .put("slot/" + appointment.id + "/update/", {
+        user: AuthStore.user.user_id,
+        address: address,
+        status: "C"
+      })
+      .catch(err => console.log(err));
+
+    this.removeApp(appointment);
+  }
+
+  checkout(navigation, address) {
     console.log("CHECKOUT FETCH", this.reservedSlots);
     this.appointments.forEach(appointment => {
       instance
         .put("slot/" + appointment.id + "/update/", {
-          user: AuthStore.user.user_id
+          user: AuthStore.user.user_id,
+          address: address,
+          status: "C"
         })
         .then(() => {
           console.log("TRYING TO GO TO PROFILEW");

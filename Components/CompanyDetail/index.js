@@ -28,8 +28,8 @@ import CompanyStore from "../../stores/companyStore";
 import styles from "./styles";
 
 const instance = axios.create({
-  baseURL: "http://104.248.38.127/"
-  // baseURL: "http:127.0.0.1:8000/"
+  // baseURL: "http://104.248.38.127/"
+  baseURL: "http:127.0.0.1:8000/"
 });
 
 class CompanyDetail extends Component {
@@ -53,12 +53,7 @@ class CompanyDetail extends Component {
   }
 
   static navigationOptions = ({ navigation }) => ({
-    title: navigation.getParam("company", {}).name,
-    headerRight: (
-      <Button onPress={() => navigation.navigate("AppointmentList")}>
-        <Text>CART</Text>
-      </Button>
-    )
+    title: navigation.getParam("company", {}).name
   });
 
   render() {
